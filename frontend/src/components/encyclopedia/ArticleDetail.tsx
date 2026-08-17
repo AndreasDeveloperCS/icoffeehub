@@ -31,6 +31,26 @@ export function ArticleDetail({ article }: { article: Article }) {
         )}
       </div>
 
+      {article.sources && article.sources.length > 0 && (
+        <div className="mt-10 border-t border-espresso-100 pt-6">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-espresso-400">{t('encyclopedia.sources')}</h2>
+          <ul className="mt-3 space-y-1.5">
+            {article.sources.map((s) => (
+              <li key={s.url}>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-espresso-600 underline decoration-espresso-200 hover:text-espresso-800"
+                >
+                  {s.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {article.countrySlug && (
         <Link href={`/country/${article.countrySlug}`} className="btn-outline mt-10 inline-flex">
           {t('encyclopedia.exploreOrigin')} &rarr;

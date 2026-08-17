@@ -1,5 +1,14 @@
-import { IsArray, IsEnum, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsEnum, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
 import { ArticleType } from '../schemas/article.schema';
+
+class ArticleSourceDto {
+  @IsString()
+  title: string;
+
+  @IsString()
+  url: string;
+}
 
 export class UpsertArticleDto {
   @IsString()
@@ -39,4 +48,18 @@ export class UpsertArticleDto {
   @IsOptional()
   @IsEnum(['draft', 'published'])
   status?: 'draft' | 'published';
+
+  @IsOptional()
+  @IsString()
+  locale?: string;
+
+  @IsOptional()
+  @IsString()
+  translationGroup?: string;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ArticleSourceDto)
+  sources?: ArticleSourceDto[];
 }

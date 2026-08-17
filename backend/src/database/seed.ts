@@ -12,6 +12,15 @@ import { CouponSchema, CouponType } from '../modules/promotions/schemas/coupon.s
 import { CarrierSchema } from '../modules/fulfillment/schemas/carrier.schema';
 import { RoastLevel, ProcessingMethod, ProductCategory } from '../modules/catalog/enums/coffee.enums';
 import { Role } from '../common/enums/role.enum';
+import { ARTICLE_META } from './articles/meta';
+import { ARTICLES_EN } from './articles/en';
+import { ARTICLES_ES } from './articles/es';
+import { ARTICLES_PT } from './articles/pt';
+import { ARTICLES_FR } from './articles/fr';
+import { ARTICLES_EL } from './articles/el';
+import { ARTICLES_BG } from './articles/bg';
+import { ARTICLES_AR } from './articles/ar';
+import { ArticleTranslation } from './articles/types';
 
 const User = mongoose.model('User', UserSchema);
 const SellerCompany = mongoose.model('SellerCompany', SellerCompanySchema);
@@ -253,35 +262,26 @@ async function seed() {
   console.log(`Seeded ${productSeeds.length} products.`);
 
   // --- Articles ---
-  const articleSeeds = [
+  // Two legacy site-specific articles that aren't part of the translated
+  // encyclopedia batch below (general intro piece + launch announcement).
+  const legacyArticleSeeds = [
     {
       title: 'The Coffee Encyclopedia: Understanding Origin and Terroir',
       type: 'encyclopedia',
+      locale: 'en',
       summary: 'How altitude, soil and climate shape flavor in the cup.',
       body: 'Coffee terroir works much like wine terroir: altitude, soil composition, rainfall and shade all influence bean density and flavor development...',
     },
     {
-      title: 'Ethiopia: The Birthplace of Coffee',
-      type: 'country',
-      countrySlug: 'ethiopia',
-      summary: 'A guide to Ethiopia\'s coffee regions, varieties and processing traditions.',
-      body: 'Ethiopia is widely regarded as the birthplace of Arabica coffee, with an extraordinary diversity of heirloom varieties...',
-    },
-    {
-      title: 'V60 Pour-Over Brew Guide',
-      type: 'brew_guide',
-      summary: 'A step-by-step recipe for a balanced, clean cup using the Hario V60.',
-      body: 'Use a 1:16 coffee-to-water ratio, water at 92-96C, and a 3-minute total brew time for a bright, clean cup...',
-    },
-    {
       title: 'iCoffeeHub Launches Global Origin Marketplace',
       type: 'news',
+      locale: 'en',
       summary: 'iCoffeeHub connects farms, roasters and coffee lovers worldwide.',
       body: 'Today we are launching the iCoffeeHub marketplace, connecting verified coffee farms and roasters directly with customers worldwide...',
     },
   ];
 
-  for (const a of articleSeeds) {
+  for (const a of legacyArticleSeeds) {
     const slug = slugify(a.title);
     await Article.findOneAndUpdate(
       { slug },
@@ -289,7 +289,53 @@ async function seed() {
       { upsert: true },
     );
   }
-  console.log(`Seeded ${articleSeeds.length} articles.`);
+  console.log(`Seeded ${legacyArticleSeeds.length} legacy articles.`);
+
+  // --- Encyclopedia: Origins, Brew Guides, Recipes, Courses and News, in every supported language ---
+  const TRANSLATIONS_BY_LOCALE: Record<string, ArticleTranslation[]> = {
+    en: ARTICLES_EN,
+    es: ARTICLES_ES,
+    pt: ARTICLES_PT,
+    fr: ARTICLES_FR,
+    el: ARTICLES_EL,
+    bg: ARTICLES_BG,
+    ar: ARTICLES_AR,
+  };
+
+  let encyclopediaCount = 0;
+  for (const [locale, translations] of Object.entries(TRANSLATIONS_BY_LOCALE)) {
+    for (const translation of translations) {
+      const meta = ARTICLE_META.find((m) => m.translationGroup === translation.translationGroup);
+      if (!meta) {
+        console.warn(`No metadata found for translationGroup "${translation.translationGroup}" (${locale}) — skipping.`);
+        continue;
+      }
+      // English keeps the clean canonical slug; other languages get a locale suffix
+      // so all seven variants of the same article can coexist by unique slug.
+      const baseSlug = slugify(translation.title);
+      const slug = locale === 'en' ? baseSlug : `${baseSlug}-${locale}`;
+      await Article.findOneAndUpdate(
+        { slug },
+        {
+          slug,
+          title: translation.title,
+          summary: translation.summary,
+          body: translation.body,
+          type: meta.type,
+          countrySlug: meta.countrySlug,
+          tags: meta.tags,
+          sources: meta.sources,
+          locale,
+          translationGroup: meta.translationGroup,
+          status: 'published',
+          publishedAt: new Date(),
+        },
+        { upsert: true },
+      );
+      encyclopediaCount += 1;
+    }
+  }
+  console.log(`Seeded ${encyclopediaCount} multilingual encyclopedia articles (${ARTICLE_META.length} topics x ${Object.keys(TRANSLATIONS_BY_LOCALE).length} languages).`);
 
   // --- Subscription plan ---
   await SubscriptionPlan.findOneAndUpdate(

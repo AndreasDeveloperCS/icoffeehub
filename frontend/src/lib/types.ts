@@ -89,6 +89,11 @@ export interface Country {
   isCoffeeOrigin: boolean;
 }
 
+export interface ArticleSource {
+  title: string;
+  url: string;
+}
+
 export interface Article {
   _id: string;
   title: string;
@@ -103,6 +108,9 @@ export interface Article {
   seoTitle?: string;
   seoDescription?: string;
   publishedAt?: string;
+  locale?: string;
+  translationGroup?: string;
+  sources?: ArticleSource[];
 }
 
 export interface CartItem {

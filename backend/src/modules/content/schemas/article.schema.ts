@@ -3,6 +3,16 @@ import { Document } from 'mongoose';
 
 export type ArticleDocument = Article & Document;
 
+@Schema({ _id: false })
+class ArticleSource {
+  @Prop({ required: true })
+  title: string;
+
+  @Prop({ required: true })
+  url: string;
+}
+const ArticleSourceSchema = SchemaFactory.createForClass(ArticleSource);
+
 export enum ArticleType {
   ENCYCLOPEDIA = 'encyclopedia',
   COUNTRY = 'country',
@@ -52,7 +62,21 @@ export class Article {
 
   @Prop()
   publishedAt?: Date;
+
+  // BCP-47-ish primary subtag (en, es, pt, fr, el, bg, ar) matching the frontend's SUPPORTED_LOCALES.
+  @Prop({ default: 'en', index: true })
+  locale: string;
+
+  // Shared identifier linking every language variant of the same underlying article,
+  // since each locale has its own document (and its own translated slug).
+  @Prop({ index: true })
+  translationGroup?: string;
+
+  // "Further reading" citations to the external material the article draws on.
+  @Prop({ type: [ArticleSourceSchema], default: [] })
+  sources: ArticleSource[];
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);
 ArticleSchema.index({ title: 'text', summary: 'text', body: 'text' });
+ArticleSchema.index({ type: 1, locale: 1 });

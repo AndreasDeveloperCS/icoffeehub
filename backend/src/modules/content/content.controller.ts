@@ -12,13 +12,18 @@ export class ContentController {
   constructor(private readonly contentService: ContentService) {}
 
   @Get()
-  list(@Query('type') type?: ArticleType, @Query('q') q?: string) {
-    return this.contentService.listPublished(type, q);
+  list(@Query('type') type?: ArticleType, @Query('q') q?: string, @Query('locale') locale?: string) {
+    return this.contentService.listPublished(type, q, locale);
   }
 
   @Get('country/:countrySlug')
-  byCountry(@Param('countrySlug') countrySlug: string) {
-    return this.contentService.listByCountry(countrySlug);
+  byCountry(@Param('countrySlug') countrySlug: string, @Query('locale') locale?: string) {
+    return this.contentService.listByCountry(countrySlug, locale);
+  }
+
+  @Get('translations/:translationGroup')
+  translations(@Param('translationGroup') translationGroup: string) {
+    return this.contentService.listTranslations(translationGroup);
   }
 
   @Get('admin/all')

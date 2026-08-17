@@ -1,13 +1,33 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { api } from '@/lib/api';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { Article } from '@/lib/types';
 
 const TYPES = ['', 'encyclopedia', 'country', 'brew_guide', 'recipe', 'course', 'news'];
 
-export function EncyclopediaList({ type, articles }: { type: string; articles: Article[] }) {
-  const { t } = useLanguage();
+export function EncyclopediaList({ type, articles: initialArticles }: { type: string; articles: Article[] }) {
+  const { t, locale } = useLanguage();
+  const [articles, setArticles] = useState(initialArticles);
+  const [loading, setLoading] = useState(false);
+
+  // The list is server-rendered in English for the first paint/SEO; once the
+  // client knows the visitor's chosen language we re-fetch in that locale.
+  useEffect(() => {
+    if (locale === 'en') {
+      setArticles(initialArticles);
+      return;
+    }
+    setLoading(true);
+    const params = new URLSearchParams({ locale });
+    if (type) params.set('type', type);
+    api<Article[]>(`/articles?${params.toString()}`, { auth: false })
+      .then(setArticles)
+      .catch(() => setArticles([]))
+      .finally(() => setLoading(false));
+  }, [locale, type, initialArticles]);
 
   return (
     <div className="container-page py-10">
@@ -27,7 +47,9 @@ export function EncyclopediaList({ type, articles }: { type: string; articles: A
         ))}
       </div>
 
-      {articles.length === 0 ? (
+      {loading ? (
+        <p className="mt-10 text-sm text-espresso-400">{t('common.loading')}</p>
+      ) : articles.length === 0 ? (
         <p className="mt-10 text-sm text-espresso-500">{t('encyclopedia.empty')}</p>
       ) : (
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

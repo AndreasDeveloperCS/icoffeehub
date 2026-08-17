@@ -41,8 +41,8 @@ export class ContentService {
     await this.articleModel.findByIdAndDelete(id).exec();
   }
 
-  listPublished(type?: ArticleType, q?: string) {
-    const filter: Record<string, unknown> = { status: 'published' };
+  listPublished(type?: ArticleType, q?: string, locale = 'en') {
+    const filter: Record<string, unknown> = { status: 'published', locale };
     if (type) filter.type = type;
     if (q) filter.$text = { $search: q };
     return this.articleModel.find(filter).sort({ publishedAt: -1 }).exec();
@@ -54,8 +54,13 @@ export class ContentService {
     return article;
   }
 
-  listByCountry(countrySlug: string) {
-    return this.articleModel.find({ countrySlug, status: 'published' }).exec();
+  listByCountry(countrySlug: string, locale = 'en') {
+    return this.articleModel.find({ countrySlug, status: 'published', locale }).exec();
+  }
+
+  /** Every published language variant of the article sharing `translationGroup`, for a language switcher. */
+  listTranslations(translationGroup: string) {
+    return this.articleModel.find({ translationGroup, status: 'published' }).exec();
   }
 
   listAllForAdmin() {
