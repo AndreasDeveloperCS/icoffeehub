@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/lib/auth-context';
 import { api } from '@/lib/api';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { ProductCollection } from '@/lib/types';
 
 export function CollectionPicker({ productId }: { productId: string }) {
   const { user } = useAuth();
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [collections, setCollections] = useState<ProductCollection[]>([]);
 
@@ -25,14 +27,14 @@ export function CollectionPicker({ productId }: { productId: string }) {
   return (
     <div className="relative">
       <button type="button" onClick={() => setOpen((v) => !v)} className="text-sm font-semibold text-espresso-600 hover:text-espresso-900">
-        + Save to a collection
+        {t('collectionPicker.saveToCollection')}
       </button>
       {open && (
         <div className="absolute left-0 z-10 mt-2 w-64 rounded-xl border border-espresso-100 bg-white p-3 shadow-card-hover" onMouseLeave={() => setOpen(false)}>
           {collections.length === 0 ? (
             <p className="text-xs text-espresso-500">
-              No collections yet — create one from{' '}
-              <a href="/account/collections" className="underline">your account</a>.
+              {t('collectionPicker.noCollections')}{' '}
+              <a href="/account/collections" className="underline">{t('collectionPicker.yourAccount')}</a>.
             </p>
           ) : (
             <ul className="space-y-1.5">

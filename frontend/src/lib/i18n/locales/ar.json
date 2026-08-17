@@ -1,0 +1,399 @@
+{
+  "common": {
+    "cart": "السلة",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "join": "انضم",
+    "language": "اللغة",
+    "currencyLabel": "USD",
+    "loading": "جارٍ التحميل…",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "countries": {
+      "ethiopia": "إثيوبيا",
+      "kenya": "كينيا",
+      "colombia": "كولومبيا",
+      "brazil": "البرازيل",
+      "guatemala": "غواتيمالا",
+      "indonesia": "إندونيسيا"
+    }
+  },
+  "header": {
+    "navMarketplace": "السوق",
+    "navEncyclopedia": "الموسوعة",
+    "navAiAssistant": "مساعد الذكاء الاصطناعي",
+    "searchPlaceholder": "ابحث عن المنشأ، البن، المحمصات…",
+    "adminDashboard": "لوحة تحكم المشرف",
+    "sellerPortal": "بوابة البائع",
+    "myAccount": "حسابي"
+  },
+  "footer": {
+    "tagline": "كل شيء عن القهوة. مركز عالمي واحد. سوق وموسوعة ومساعد ذكاء اصطناعي يربط مزارع القهوة والمحمصات وعشاق القهوة حول العالم.",
+    "originCountries": "بلدان المنشأ",
+    "discover": "اكتشف",
+    "discoverMarketplace": "السوق",
+    "discoverEncyclopedia": "موسوعة القهوة",
+    "discoverAiAssistant": "مساعد القهوة الذكي",
+    "discoverBrewGuides": "أدلة التحضير",
+    "business": "الأعمال",
+    "businessSell": "البيع على iCoffeeHub",
+    "businessSupport": "المساعدة والدعم",
+    "businessTerms": "شروط الخدمة",
+    "businessPrivacy": "سياسة الخصوصية",
+    "copyright": "© {year} iCoffeeHub.com — جميع الحقوق محفوظة."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "سوق وموسوعة القهوة العالمية",
+      "titleLine1": "كل شيء عن القهوة.",
+      "titleLine2": "مركز عالمي واحد.",
+      "subtitle": "اكتشف مزارع ومحامص موثوقة، وتتبّع كل حبة قهوة إلى منشئها، ودع مساعدنا الذكي يرشدك إلى فنجانك المفضل التالي.",
+      "ctaMarketplace": "استكشف السوق",
+      "ctaQuiz": "ابدأ اختبار الذوق"
+    },
+    "trust": {
+      "verifiedSellers": { "label": "بائعون موثّقون", "desc": "مزارع ومحامص تمت مراجعتها قبل الإدراج" },
+      "freshRoastDates": { "label": "تواريخ تحميص حديثة", "desc": "كل كيس يوضّح بالضبط متى تم تحميصه" },
+      "originTransparency": { "label": "شفافية المنشأ", "desc": "المزرعة والارتفاع وطريقة المعالجة في كل منتج" },
+      "aiGuidedDiscovery": { "label": "اكتشاف موجَّه بالذكاء الاصطناعي", "desc": "اختيارات مخصصة وفق ملف ذوقك" }
+    },
+    "originSection": {
+      "eyebrow": "استكشف حسب المنشأ",
+      "title": "لكل فنجان قهوة مسقط رأس"
+    },
+    "featuredSection": {
+      "eyebrow": "منتقاة بعناية",
+      "title": "قهوة مميزة هذا الأسبوع",
+      "action": "تصفح الكل"
+    },
+    "aiTeaser": {
+      "eyebrow": "مساعد القهوة الذكي",
+      "title": "لست متأكدًا مما تحضّره تاليًا؟",
+      "body": "أجب عن بضعة أسئلة سريعة حول التحميص والقوام والنكهة وسنطابقك مع قهوة من سوقنا العالمي — مع الفصل الواضح بين توصياتنا والحقائق الواردة في كل منتج.",
+      "cta": "ابدأ اختبار الذوق"
+    },
+    "sellerCta": {
+      "title": "هل أنت مزرعة قهوة أو محمصة أو متجر؟",
+      "body": "أدرج قهوتك على iCoffeeHub وتواصل مع عملاء حول العالم ببيانات منشأ شفافة ولوجستيات مناطق توصيل مدمجة.",
+      "cta": "ابدأ البيع"
+    },
+    "learnSection": {
+      "eyebrow": "تعلّم",
+      "title": "من موسوعة القهوة",
+      "action": "استكشف الموسوعة"
+    }
+  },
+  "marketplace": {
+    "resultsFor": "نتائج لـ \"{query}\"",
+    "browseTitle": "تصفح القهوة من بائعين موثّقين",
+    "filterOrigin": "بلد المنشأ",
+    "allOrigins": "كل المنشآت",
+    "filterRoast": "درجة التحميص",
+    "filterProcess": "طريقة المعالجة",
+    "clearFilters": "مسح كل الفلاتر",
+    "coffeesFound": "{count} قهوة موجودة",
+    "noResultsTitle": "لا توجد قهوة مطابقة لهذه الفلاتر",
+    "noResultsBody": "جرّب إزالة أحد الفلاتر أو البحث عن منشأ مختلف.",
+    "sorts": {
+      "newest": "الأحدث",
+      "price_asc": "السعر: من الأقل إلى الأعلى",
+      "price_desc": "السعر: من الأعلى إلى الأقل",
+      "rating": "الأعلى تقييمًا"
+    }
+  },
+  "product": {
+    "featuredBadge": "مميز",
+    "roastBadge": "تحميص {roast}",
+    "specs": {
+      "origin": "المنشأ",
+      "farm": "المزرعة",
+      "variety": "الصنف",
+      "altitude": "الارتفاع",
+      "process": "طريقة المعالجة",
+      "roast": "التحميص"
+    },
+    "roastedOn": "تم التحميص في {date}",
+    "reviewsHeading": "التقييمات",
+    "verifiedSeller": "بائع موثّق"
+  },
+  "productActions": {
+    "bagSize": "حجم الكيس",
+    "decreaseQuantity": "إنقاص الكمية",
+    "increaseQuantity": "زيادة الكمية",
+    "inStock": "{count} متوفر في المخزون",
+    "outOfStock": "غير متوفر",
+    "added": "أُضيف إلى السلة ✓",
+    "adding": "جارٍ الإضافة…",
+    "addToCart": "أضف إلى السلة — {price}",
+    "removeFromWishlist": "إزالة من قائمة الرغبات",
+    "saveToWishlist": "حفظ في قائمة الرغبات"
+  },
+  "reviews": {
+    "submitError": "تعذّر إرسال التقييم.",
+    "empty": "لا توجد تقييمات بعد — كن أول من يشارك ملاحظاته حول الطعم.",
+    "writeReview": "اكتب تقييمًا",
+    "signInPrompt": "سجّل الدخول لترك تقييم للطعم.",
+    "alreadyReviewed": "لقد قمت بتقييم هذه القهوة من قبل. شكرًا لك!",
+    "starsAriaLabel": "{count} نجوم",
+    "placeholder": "ما الذي تذوقته؟",
+    "submitting": "جارٍ الإرسال…",
+    "submit": "إرسال التقييم",
+    "ratingAriaLabel": "{value} من أصل 5 نجوم"
+  },
+  "coffeeOptions": {
+    "roastLevels": {
+      "light": "فاتح",
+      "medium_light": "فاتح متوسط",
+      "medium": "متوسط",
+      "medium_dark": "متوسط داكن",
+      "dark": "داكن"
+    },
+    "processingMethods": {
+      "washed": "مغسولة",
+      "natural": "طبيعية (جافة)",
+      "honey": "هَني (عسلية)",
+      "anaerobic": "لاهوائية",
+      "wet_hulled": "مقشورة رطبة",
+      "decaf": "منزوعة الكافيين"
+    },
+    "flavorNotes": {
+      "chocolate": "شوكولاتة",
+      "caramel": "كراميل",
+      "citrus": "حمضيات",
+      "berry": "توت",
+      "stone_fruit": "فواكه نواة",
+      "floral": "زهري",
+      "nutty": "مكسّرات",
+      "spice": "توابل",
+      "honey": "عسل",
+      "winey": "نكهة نبيذية",
+      "tropical_fruit": "فواكه استوائية",
+      "herbal": "أعشاب",
+      "smoky": "مدخّن",
+      "earthy": "ترابي",
+      "vanilla": "فانيليا"
+    }
+  },
+  "cart": {
+    "signInTitle": "سجّل الدخول لعرض سلتك",
+    "emptyTitle": "سلتك فارغة",
+    "emptyBody": "استكشف السوق للعثور على قهوتك المفضلة التالية.",
+    "browseMarketplace": "تصفح السوق",
+    "title": "سلتك",
+    "removeItem": "إزالة العنصر",
+    "orderSummary": "ملخص الطلب",
+    "subtotal": "المجموع الفرعي",
+    "shippingNote": "يُحسب الشحن عند إتمام الطلب حسب بلد التوصيل.",
+    "proceedToCheckout": "المتابعة إلى الدفع"
+  },
+  "checkout": {
+    "signInTitle": "سجّل الدخول لإتمام الشراء",
+    "orderConfirmed": "تم تأكيد الطلب",
+    "thankYou": "شكرًا لك، {name}!",
+    "orderPlaced": "تم تقديم الطلب رقم #{orderNumber} بمبلغ {total}.",
+    "viewOrders": "عرض طلباتي",
+    "keepBrowsing": "متابعة التصفح",
+    "couponError": "تعذّر تطبيق القسيمة.",
+    "checkoutFailed": "فشل إتمام الطلب. يرجى المحاولة مرة أخرى.",
+    "title": "الدفع",
+    "shippingAddress": "عنوان الشحن",
+    "fullName": "الاسم الكامل",
+    "addressLine1": "العنوان - السطر 1",
+    "addressLine2": "العنوان - السطر 2 (اختياري)",
+    "city": "المدينة",
+    "postalCode": "الرمز البريدي",
+    "country": "البلد",
+    "selectCountry": "اختر بلدًا",
+    "phone": "الهاتف (اختياري)",
+    "couponCode": "رمز القسيمة (اختياري)",
+    "couponPlaceholder": "مثال: WELCOME10",
+    "checkingCoupon": "جارٍ التحقق…",
+    "apply": "تطبيق",
+    "couponApplied": "تم تطبيق القسيمة {code} — خصم {discount}.",
+    "placingOrder": "جارٍ تقديم الطلب…",
+    "placeOrder": "تقديم الطلب — {total}",
+    "paymentSimulated": "الدفع محاكى في هذه النسخة التجريبية — لا يتم جمع أي بيانات بطاقة حقيقية.",
+    "discount": "الخصم ({code})",
+    "totalBeforeShipping": "الإجمالي قبل الشحن",
+    "shippingPerSellerNote": "يُحسب الشحن لكل بائع حسب بلدك."
+  },
+  "encyclopedia": {
+    "eyebrow": "تعلّم",
+    "title": "موسوعة القهوة",
+    "subtitle": "المنشأ وعلم التحضير والثقافة وراء كل فنجان — مكتوبة لمساعدتك على التذوق بمزيد من الوعي.",
+    "empty": "لا توجد مقالات منشورة في هذا التصنيف بعد.",
+    "readMore": "اقرأ المزيد",
+    "bodyComingSoon": "محتوى المقال الكامل قريبًا.",
+    "exploreOrigin": "استكشف هذا المنشأ",
+    "types": {
+      "all": "الكل",
+      "encyclopedia": "الموسوعة",
+      "country": "المنشآت",
+      "brew_guide": "أدلة التحضير",
+      "recipe": "وصفات",
+      "course": "دورات",
+      "news": "أخبار"
+    }
+  },
+  "country": {
+    "coffeeFrom": "قهوة من {country}",
+    "storiesAndGuides": "قصص وأدلة",
+    "noListings": "لا توجد منتجات من {country} بعد — تفقّد الصفحة قريبًا."
+  },
+  "auth": {
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "welcomeBack": "مرحبًا بعودتك",
+    "signInTitle": "سجّل الدخول إلى iCoffeeHub",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "signingIn": "جارٍ تسجيل الدخول…",
+    "newToHub": "جديد على iCoffeeHub؟",
+    "createAccount": "إنشاء حساب",
+    "joinHub": "انضم إلى iCoffeeHub",
+    "createAccountTitle": "أنشئ حسابك",
+    "imCoffeeLover": "أنا من محبي القهوة",
+    "imSeller": "أنا بائع",
+    "contactName": "اسم جهة الاتصال",
+    "fullName": "الاسم الكامل",
+    "passwordHint": "8 أحرف على الأقل.",
+    "creatingAccount": "جارٍ إنشاء الحساب…",
+    "createSellerAccount": "إنشاء حساب بائع",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟"
+  },
+  "aiAssistant": {
+    "eyebrow": "مساعد القهوة الذكي",
+    "signInTitle": "سجّل الدخول للحصول على اختيارات مخصصة",
+    "signInBody": "أجرِ اختبار ذوق قصيرًا وسنوصي بقهوة من مختلف أنحاء السوق تناسب ذائقتك.",
+    "title": "اعثر على فنجانك المفضل التالي",
+    "disclaimer": "هذه اقتراحات مُولّدة بالذكاء الاصطناعي بناءً على إجاباتك أدناه، وليست حقائق موثّقة — تحقق دائمًا من صفحة كل منتج للحصول على تفاصيل دقيقة عن المنشأ والتحميص.",
+    "tasteQuizTab": "اختبار الذوق",
+    "askQuestionTab": "اطرح سؤالًا",
+    "preferredRoasts": "درجات التحميص المفضلة",
+    "flavorsYouLove": "النكهات التي تحبها",
+    "flavorsToAvoid": "النكهات التي تفضّل تجنّبها",
+    "acidity": "الحموضة",
+    "smooth": "ناعمة",
+    "bright": "منعشة",
+    "body": "القوام",
+    "light": "خفيف",
+    "full": "ممتلئ",
+    "matching": "جارٍ مطابقتك مع قهوة مناسبة…",
+    "getRecommendations": "احصل على توصياتي",
+    "recommendedForYou": "موصى به لك",
+    "noMatches": "لا توجد تطابقات بعد — جرّب تعديل إجاباتك."
+  },
+  "aiChat": {
+    "emptyPrompt": "اسأل عن استكشاف أخطاء التحضير أو المعدات أو منشأ القهوة — مثال: \"لماذا قهوتي مرة؟\"",
+    "typing": "يكتب…",
+    "placeholder": "اطرح سؤالًا عن القهوة…",
+    "send": "إرسال"
+  },
+  "account": {
+    "overviewTitle": "نظرة عامة على الحساب",
+    "overviewSubtitle": "أدر طلباتك وقائمة رغباتك ومذكرة التذوق الخاصة بك.",
+    "ordersPlaced": "الطلبات المقدَّمة",
+    "totalSpent": "إجمالي الإنفاق",
+    "retakeQuiz": "أعد اختبار الذوق",
+    "retakeQuizBody": "احصل على توصيات ذكاء اصطناعي جديدة",
+    "recentOrders": "الطلبات الأخيرة",
+    "noOrdersYet": "لا توجد طلبات بعد.",
+    "startShopping": "ابدأ التسوق",
+    "orderNumber": "الطلب رقم #{number}",
+    "totalInclShipping": "الإجمالي (شامل الشحن)",
+    "shippingTo": "الشحن إلى {city}، {country}",
+    "trackManage": "تتبّع / إدارة",
+    "greeting": "مرحبًا، {name}",
+    "nav": {
+      "overview": "نظرة عامة",
+      "orders": "الطلبات",
+      "wishlist": "قائمة الرغبات",
+      "collections": "المجموعات",
+      "journal": "مذكرة التذوق",
+      "support": "الدعم"
+    }
+  },
+  "orderDetail": {
+    "returnSubmitted": "تم إرسال طلب الإرجاع.",
+    "returnError": "تعذّر إرسال طلب الإرجاع.",
+    "disputeFiled": "تم تقديم النزاع — سيقوم فريق الدعم بمراجعته.",
+    "disputeError": "تعذّر تقديم النزاع.",
+    "items": "العناصر",
+    "requestReturn": "طلب إرجاع",
+    "shipping": "الشحن",
+    "total": "الإجمالي",
+    "returnTitle": "إرجاع {sku}",
+    "returnPlaceholder": "لماذا تقوم بإرجاع هذا العنصر؟",
+    "submitReturnRequest": "إرسال طلب الإرجاع",
+    "shipmentTracking": "تتبّع الشحنة",
+    "noShipments": "لا توجد شحنات بعد — لم يقم البائع بتحديد هذا الطلب كمشحون.",
+    "carrier": "شركة الشحن",
+    "havingProblem": "هل تواجه مشكلة في هذا الطلب؟",
+    "fileDispute": "تقديم نزاع",
+    "disputePlaceholder": "ما الذي حدث بشكل خاطئ؟",
+    "submitDispute": "إرسال النزاع"
+  },
+  "collections": {
+    "intro": "قوائم قهوة منتقاة بعناية — رائعة لأفكار الهدايا، أو مشروع تحضير، أو قهوة لتجربتها لاحقًا. أضف منتجات من أي صفحة منتج.",
+    "newCollection": "مجموعة جديدة",
+    "namePlaceholder": "الاسم",
+    "descriptionPlaceholder": "الوصف (اختياري)",
+    "makeShareable": "اجعل هذه المجموعة قابلة للمشاركة عبر رابط عام",
+    "creating": "جارٍ الإنشاء…",
+    "createCollection": "إنشاء مجموعة",
+    "public": "عامة",
+    "productCountOne": "{count} منتج",
+    "productCountOther": "{count} منتجات",
+    "empty": "لا توجد مجموعات بعد."
+  },
+  "journal": {
+    "intro": "تظهر هنا الملاحظات التي تحفظها من صفحات المنتجات — سجل مستمر لما تذوقته.",
+    "empty": "لا توجد ملاحظات تذوق بعد."
+  },
+  "support": {
+    "intro": "لديك أسئلة حول طلب أو بائع أو المنصة؟ نحن هنا للمساعدة.",
+    "newTicket": "تذكرة جديدة",
+    "subject": "الموضوع",
+    "howCanWeHelp": "كيف يمكننا مساعدتك؟",
+    "sending": "جارٍ الإرسال…",
+    "submitTicket": "إرسال التذكرة",
+    "addReply": "أضف ردًا…",
+    "empty": "لا توجد تذاكر دعم بعد."
+  },
+  "wishlist": {
+    "empty": "لا شيء محفوظ بعد. احفظ قهوة من صفحة منتجها لتظهر هنا."
+  },
+  "journalNote": {
+    "saved": "تم الحفظ في مذكرة التذوق ✓",
+    "addNote": "+ إضافة ملاحظة تذوق",
+    "placeholder": "ما الذي لفت انتباهك في هذا الفنجان؟",
+    "rating": "التقييم",
+    "saving": "جارٍ الحفظ…",
+    "saveNote": "حفظ الملاحظة"
+  },
+  "collectionPicker": {
+    "saveToCollection": "+ حفظ في مجموعة",
+    "noCollections": "لا توجد مجموعات بعد — أنشئ واحدة من",
+    "yourAccount": "حسابك"
+  },
+  "calculator": {
+    "eyebrow": "أدوات القهوة",
+    "title": "حاسبة نسبة التحضير",
+    "subtitle": "اعثر على النسبة المثالية بين القهوة والماء لطريقة التحضير الخاصة بك، أو اضبط نسبتك الخاصة.",
+    "brewMethod": "طريقة التحضير",
+    "customRatio": "نسبة مخصصة",
+    "coffeeGrams": "القهوة (جم)",
+    "waterGrams": "الماء (جم)",
+    "hint": "غيّر أي قيمة وستتحدث القيم الأخرى تلقائيًا.",
+    "resultTitle": "تحضيرك",
+    "ratio": "النسبة",
+    "presets": {
+      "v60": "V60",
+      "chemex": "Chemex",
+      "frenchPress": "الفرنش برس",
+      "aeropress": "Aeropress",
+      "coldBrew": "القهوة الباردة",
+      "mokaPot": "إبريق موكا",
+      "espresso": "إسبريسو"
+    }
+  }
+}

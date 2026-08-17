@@ -4,21 +4,24 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { LogoWordmark } from './Logo';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/lib/auth-context';
 import { useCart } from '@/lib/cart-context';
-
-const NAV_LINKS = [
-  { href: '/marketplace', label: 'Marketplace' },
-  { href: '/encyclopedia', label: 'Encyclopedia' },
-  { href: '/ai-assistant', label: 'AI Assistant' },
-];
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export function Header() {
   const { user, logout } = useAuth();
   const { itemCount } = useCart();
+  const { t } = useLanguage();
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const NAV_LINKS = [
+    { href: '/marketplace', label: t('header.navMarketplace') },
+    { href: '/encyclopedia', label: t('header.navEncyclopedia') },
+    { href: '/ai-assistant', label: t('header.navAiAssistant') },
+  ];
 
   function onSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -51,13 +54,14 @@ export function Header() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search origins, beans, roasters…"
+            placeholder={t('header.searchPlaceholder')}
             className="input h-10 py-0"
           />
         </form>
 
         <div className="ml-auto flex items-center gap-3 sm:ml-0">
-          <Link href="/cart" className="relative rounded-full p-2 text-espresso-700 hover:bg-espresso-50" aria-label="Cart">
+          <LanguageSwitcher />
+          <Link href="/cart" className="relative rounded-full p-2 text-espresso-700 hover:bg-espresso-50" aria-label={t('common.cart')}>
             <CartIcon />
             {itemCount > 0 && (
               <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-gold-500 text-[10px] font-bold text-espresso-900">
@@ -81,7 +85,7 @@ export function Header() {
                   onMouseLeave={() => setMenuOpen(false)}
                 >
                   <Link href={accountHref} className="block px-4 py-2.5 text-sm text-espresso-700 hover:bg-cream-100" onClick={() => setMenuOpen(false)}>
-                    {user.role === 'admin' ? 'Admin dashboard' : user.role === 'seller' ? 'Seller portal' : 'My account'}
+                    {user.role === 'admin' ? t('header.adminDashboard') : user.role === 'seller' ? t('header.sellerPortal') : t('header.myAccount')}
                   </Link>
                   <button
                     onClick={() => {
@@ -91,7 +95,7 @@ export function Header() {
                     }}
                     className="block w-full px-4 py-2.5 text-left text-sm text-espresso-700 hover:bg-cream-100"
                   >
-                    Sign out
+                    {t('common.signOut')}
                   </button>
                 </div>
               )}
@@ -99,10 +103,10 @@ export function Header() {
           ) : (
             <div className="flex items-center gap-2">
               <Link href="/login" className="btn-outline hidden sm:inline-flex">
-                Sign in
+                {t('common.signIn')}
               </Link>
               <Link href="/register" className="btn-primary">
-                Join
+                {t('common.join')}
               </Link>
             </div>
           )}

@@ -4,27 +4,23 @@ import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { api } from '@/lib/api';
 import { ProductCard } from '@/components/ProductCard';
-import { formatLabel } from '@/lib/format';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { ROAST_LEVELS, PROCESSING_METHODS } from '@/lib/coffee-options';
 import type { Country, ProductListResponse } from '@/lib/types';
 
-const ROAST_LEVELS = ['light', 'medium_light', 'medium', 'medium_dark', 'dark'];
-const PROCESSES = ['washed', 'natural', 'honey', 'anaerobic', 'wet_hulled', 'decaf'];
-const SORTS = [
-  { value: '', label: 'Newest' },
-  { value: 'price_asc', label: 'Price: Low to High' },
-  { value: 'price_desc', label: 'Price: High to Low' },
-  { value: 'rating', label: 'Top Rated' },
-];
+const SORTS = ['newest', 'price_asc', 'price_desc', 'rating'];
 
 export default function MarketplacePage() {
+  const { t } = useLanguage();
   return (
-    <Suspense fallback={<div className="container-page py-16 text-center text-espresso-400">Loading…</div>}>
+    <Suspense fallback={<div className="container-page py-16 text-center text-espresso-400">{t('common.loading')}</div>}>
       <MarketplaceContent />
     </Suspense>
   );
 }
 
 function MarketplaceContent() {
+  const { t } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -75,38 +71,38 @@ function MarketplaceContent() {
   return (
     <div className="container-page py-10">
       <div className="mb-8">
-        <p className="section-eyebrow">Marketplace</p>
+        <p className="section-eyebrow">{t('header.navMarketplace')}</p>
         <h1 className="mt-1.5 font-heading text-3xl font-bold text-espresso-800">
-          {q ? `Results for "${q}"` : 'Browse coffee from verified sellers'}
+          {q ? t('marketplace.resultsFor', { query: q }) : t('marketplace.browseTitle')}
         </h1>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_1fr]">
         <aside className="space-y-7">
-          <FilterGroup label="Origin Country">
+          <FilterGroup label={t('marketplace.filterOrigin')}>
             <select className="input" value={originCountry} onChange={(e) => setParam('originCountry', e.target.value)}>
-              <option value="">All origins</option>
+              <option value="">{t('marketplace.allOrigins')}</option>
               {countries.map((c) => (
                 <option key={c._id} value={c.name}>{c.name}</option>
               ))}
             </select>
           </FilterGroup>
 
-          <FilterGroup label="Roast Level">
+          <FilterGroup label={t('marketplace.filterRoast')}>
             <div className="flex flex-wrap gap-2">
               {ROAST_LEVELS.map((r) => (
                 <FilterChip key={r} active={roastLevel === r} onClick={() => setParam('roastLevel', roastLevel === r ? '' : r)}>
-                  {formatLabel(r)}
+                  {t(`coffeeOptions.roastLevels.${r}`)}
                 </FilterChip>
               ))}
             </div>
           </FilterGroup>
 
-          <FilterGroup label="Process">
+          <FilterGroup label={t('marketplace.filterProcess')}>
             <div className="flex flex-wrap gap-2">
-              {PROCESSES.map((p) => (
+              {PROCESSING_METHODS.map((p) => (
                 <FilterChip key={p} active={processingMethod === p} onClick={() => setParam('processingMethod', processingMethod === p ? '' : p)}>
-                  {formatLabel(p)}
+                  {t(`coffeeOptions.processingMethods.${p}`)}
                 </FilterChip>
               ))}
             </div>
@@ -114,17 +110,19 @@ function MarketplaceContent() {
 
           {activeFilterCount > 0 && (
             <button onClick={() => router.push('/marketplace')} className="text-sm font-semibold text-espresso-600 underline">
-              Clear all filters
+              {t('marketplace.clearFilters')}
             </button>
           )}
         </aside>
 
         <div>
           <div className="mb-5 flex items-center justify-between">
-            <p className="text-sm text-espresso-500">{loading ? 'Loading…' : `${data?.total ?? 0} coffees found`}</p>
+            <p className="text-sm text-espresso-500">
+              {loading ? t('common.loading') : t('marketplace.coffeesFound', { count: data?.total ?? 0 })}
+            </p>
             <select className="input w-auto" value={sort} onChange={(e) => setParam('sort', e.target.value)}>
               {SORTS.map((s) => (
-                <option key={s.value} value={s.value}>{s.label}</option>
+                <option key={s} value={s === 'newest' ? '' : s}>{t(`marketplace.sorts.${s}`)}</option>
               ))}
             </select>
           </div>
@@ -159,8 +157,8 @@ function MarketplaceContent() {
             </>
           ) : (
             <div className="card flex flex-col items-center gap-2 p-14 text-center">
-              <p className="font-heading text-lg font-semibold text-espresso-800">No coffees match those filters</p>
-              <p className="text-sm text-espresso-500">Try clearing a filter or searching a different origin.</p>
+              <p className="font-heading text-lg font-semibold text-espresso-800">{t('marketplace.noResultsTitle')}</p>
+              <p className="text-sm text-espresso-500">{t('marketplace.noResultsBody')}</p>
             </div>
           )}
         </div>

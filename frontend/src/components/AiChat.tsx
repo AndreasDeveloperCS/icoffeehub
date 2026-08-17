@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { api } from '@/lib/api';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { AiChatMessage } from '@/lib/types';
 
 export function AiChat() {
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<AiChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
@@ -37,9 +39,7 @@ export function AiChat() {
     <div className="card mx-auto flex max-w-2xl flex-col overflow-hidden">
       <div className="flex h-96 flex-col gap-3 overflow-y-auto p-5">
         {messages.length === 0 && (
-          <p className="text-sm text-espresso-400">
-            Ask about brewing troubleshooting, equipment, or coffee origins — e.g. &quot;why is my coffee bitter?&quot;
-          </p>
+          <p className="text-sm text-espresso-400">{t('aiChat.emptyPrompt')}</p>
         )}
         {messages.map((m, i) => (
           <div key={i} className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${
@@ -48,17 +48,17 @@ export function AiChat() {
             {m.content}
           </div>
         ))}
-        {sending && <div className="max-w-[85%] rounded-2xl bg-cream-100 px-4 py-2.5 text-sm text-espresso-400">Typing…</div>}
+        {sending && <div className="max-w-[85%] rounded-2xl bg-cream-100 px-4 py-2.5 text-sm text-espresso-400">{t('aiChat.typing')}</div>}
         <div ref={bottomRef} />
       </div>
       <form onSubmit={send} className="flex gap-2 border-t border-espresso-100 p-3">
         <input
           className="input"
-          placeholder="Ask a coffee question…"
+          placeholder={t('aiChat.placeholder')}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit" disabled={sending || !input.trim()} className="btn-primary shrink-0">Send</button>
+        <button type="submit" disabled={sending || !input.trim()} className="btn-primary shrink-0">{t('aiChat.send')}</button>
       </form>
     </div>
   );

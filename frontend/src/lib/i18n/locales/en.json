@@ -1,0 +1,399 @@
+{
+  "common": {
+    "cart": "Cart",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "join": "Join",
+    "language": "Language",
+    "currencyLabel": "USD",
+    "loading": "Loading…",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "countries": {
+      "ethiopia": "Ethiopia",
+      "kenya": "Kenya",
+      "colombia": "Colombia",
+      "brazil": "Brazil",
+      "guatemala": "Guatemala",
+      "indonesia": "Indonesia"
+    }
+  },
+  "header": {
+    "navMarketplace": "Marketplace",
+    "navEncyclopedia": "Encyclopedia",
+    "navAiAssistant": "AI Assistant",
+    "searchPlaceholder": "Search origins, beans, roasters…",
+    "adminDashboard": "Admin dashboard",
+    "sellerPortal": "Seller portal",
+    "myAccount": "My account"
+  },
+  "footer": {
+    "tagline": "Everything about coffee. One global hub. A marketplace, encyclopedia and AI assistant connecting coffee farms, roasters and enthusiasts worldwide.",
+    "originCountries": "Origin Countries",
+    "discover": "Discover",
+    "discoverMarketplace": "Marketplace",
+    "discoverEncyclopedia": "Coffee Encyclopedia",
+    "discoverAiAssistant": "AI Coffee Assistant",
+    "discoverBrewGuides": "Brew Guides",
+    "business": "Business",
+    "businessSell": "Sell on iCoffeeHub",
+    "businessSupport": "Help & Support",
+    "businessTerms": "Terms of Service",
+    "businessPrivacy": "Privacy Policy",
+    "copyright": "© {year} iCoffeeHub.com — All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Global Coffee Marketplace & Encyclopedia",
+      "titleLine1": "Everything about coffee.",
+      "titleLine2": "One global hub.",
+      "subtitle": "Discover verified farms and roasters, trace every bean back to its origin, and let our AI assistant guide you to your next favorite cup.",
+      "ctaMarketplace": "Explore the Marketplace",
+      "ctaQuiz": "Take the Taste Quiz"
+    },
+    "trust": {
+      "verifiedSellers": { "label": "Verified Sellers", "desc": "Farms & roasters reviewed before they list" },
+      "freshRoastDates": { "label": "Fresh Roast Dates", "desc": "Every bag shows exactly when it was roasted" },
+      "originTransparency": { "label": "Origin Transparency", "desc": "Farm, altitude and process on every product" },
+      "aiGuidedDiscovery": { "label": "AI-Guided Discovery", "desc": "Personalized picks from your taste profile" }
+    },
+    "originSection": {
+      "eyebrow": "Explore by Origin",
+      "title": "Coffee has a birthplace for every cup"
+    },
+    "featuredSection": {
+      "eyebrow": "Hand-Picked",
+      "title": "Featured coffees this week",
+      "action": "Browse all"
+    },
+    "aiTeaser": {
+      "eyebrow": "AI Coffee Assistant",
+      "title": "Not sure what to brew next?",
+      "body": "Answer a few quick questions about roast, body and flavor and we'll match you with coffees from our global marketplace — clearly separating our recommendations from the facts in each listing.",
+      "cta": "Start the taste quiz"
+    },
+    "sellerCta": {
+      "title": "Are you a coffee farm, roaster or shop?",
+      "body": "List your coffee on iCoffeeHub and reach customers worldwide with transparent origin data and built-in delivery-zone logistics.",
+      "cta": "Start selling"
+    },
+    "learnSection": {
+      "eyebrow": "Learn",
+      "title": "From the Coffee Encyclopedia",
+      "action": "Explore encyclopedia"
+    }
+  },
+  "marketplace": {
+    "resultsFor": "Results for \"{query}\"",
+    "browseTitle": "Browse coffee from verified sellers",
+    "filterOrigin": "Origin Country",
+    "allOrigins": "All origins",
+    "filterRoast": "Roast Level",
+    "filterProcess": "Process",
+    "clearFilters": "Clear all filters",
+    "coffeesFound": "{count} coffees found",
+    "noResultsTitle": "No coffees match those filters",
+    "noResultsBody": "Try clearing a filter or searching a different origin.",
+    "sorts": {
+      "newest": "Newest",
+      "price_asc": "Price: Low to High",
+      "price_desc": "Price: High to Low",
+      "rating": "Top Rated"
+    }
+  },
+  "product": {
+    "featuredBadge": "Featured",
+    "roastBadge": "{roast} Roast",
+    "specs": {
+      "origin": "Origin",
+      "farm": "Farm",
+      "variety": "Variety",
+      "altitude": "Altitude",
+      "process": "Process",
+      "roast": "Roast"
+    },
+    "roastedOn": "Roasted {date}",
+    "reviewsHeading": "Reviews",
+    "verifiedSeller": "Verified Seller"
+  },
+  "productActions": {
+    "bagSize": "Bag Size",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity",
+    "inStock": "{count} in stock",
+    "outOfStock": "Out of stock",
+    "added": "Added to cart ✓",
+    "adding": "Adding…",
+    "addToCart": "Add to cart — {price}",
+    "removeFromWishlist": "Remove from wishlist",
+    "saveToWishlist": "Save to wishlist"
+  },
+  "reviews": {
+    "submitError": "Could not submit review.",
+    "empty": "No reviews yet — be the first to share your tasting notes.",
+    "writeReview": "Write a review",
+    "signInPrompt": "Sign in to leave a tasting review.",
+    "alreadyReviewed": "You've already reviewed this coffee. Thank you!",
+    "starsAriaLabel": "{count} stars",
+    "placeholder": "What did you taste?",
+    "submitting": "Submitting…",
+    "submit": "Submit review",
+    "ratingAriaLabel": "{value} out of 5 stars"
+  },
+  "coffeeOptions": {
+    "roastLevels": {
+      "light": "Light",
+      "medium_light": "Medium Light",
+      "medium": "Medium",
+      "medium_dark": "Medium Dark",
+      "dark": "Dark"
+    },
+    "processingMethods": {
+      "washed": "Washed",
+      "natural": "Natural",
+      "honey": "Honey",
+      "anaerobic": "Anaerobic",
+      "wet_hulled": "Wet Hulled",
+      "decaf": "Decaf"
+    },
+    "flavorNotes": {
+      "chocolate": "Chocolate",
+      "caramel": "Caramel",
+      "citrus": "Citrus",
+      "berry": "Berry",
+      "stone_fruit": "Stone Fruit",
+      "floral": "Floral",
+      "nutty": "Nutty",
+      "spice": "Spice",
+      "honey": "Honey",
+      "winey": "Winey",
+      "tropical_fruit": "Tropical Fruit",
+      "herbal": "Herbal",
+      "smoky": "Smoky",
+      "earthy": "Earthy",
+      "vanilla": "Vanilla"
+    }
+  },
+  "cart": {
+    "signInTitle": "Sign in to view your cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyBody": "Explore the marketplace to find your next favorite coffee.",
+    "browseMarketplace": "Browse the marketplace",
+    "title": "Your Cart",
+    "removeItem": "Remove item",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shippingNote": "Shipping is calculated at checkout based on delivery country.",
+    "proceedToCheckout": "Proceed to Checkout"
+  },
+  "checkout": {
+    "signInTitle": "Sign in to check out",
+    "orderConfirmed": "Order Confirmed",
+    "thankYou": "Thank you, {name}!",
+    "orderPlaced": "Order #{orderNumber} has been placed for {total}.",
+    "viewOrders": "View my orders",
+    "keepBrowsing": "Keep browsing",
+    "couponError": "Could not apply coupon.",
+    "checkoutFailed": "Checkout failed. Please try again.",
+    "title": "Checkout",
+    "shippingAddress": "Shipping Address",
+    "fullName": "Full name",
+    "addressLine1": "Address line 1",
+    "addressLine2": "Address line 2 (optional)",
+    "city": "City",
+    "postalCode": "Postal code",
+    "country": "Country",
+    "selectCountry": "Select a country",
+    "phone": "Phone (optional)",
+    "couponCode": "Coupon code (optional)",
+    "couponPlaceholder": "e.g. WELCOME10",
+    "checkingCoupon": "Checking…",
+    "apply": "Apply",
+    "couponApplied": "Coupon {code} applied — {discount} off.",
+    "placingOrder": "Placing order…",
+    "placeOrder": "Place order — {total}",
+    "paymentSimulated": "Payment is simulated in this preview build — no real card details are collected.",
+    "discount": "Discount ({code})",
+    "totalBeforeShipping": "Total before shipping",
+    "shippingPerSellerNote": "Shipping is calculated per seller based on your country."
+  },
+  "encyclopedia": {
+    "eyebrow": "Learn",
+    "title": "The Coffee Encyclopedia",
+    "subtitle": "Origins, brewing science and the culture behind every cup — written to help you taste with more intention.",
+    "empty": "No articles published in this category yet.",
+    "readMore": "Read more",
+    "bodyComingSoon": "Full article content coming soon.",
+    "exploreOrigin": "Explore this origin",
+    "types": {
+      "all": "All",
+      "encyclopedia": "Encyclopedia",
+      "country": "Origins",
+      "brew_guide": "Brew Guides",
+      "recipe": "Recipes",
+      "course": "Courses",
+      "news": "News"
+    }
+  },
+  "country": {
+    "coffeeFrom": "Coffee from {country}",
+    "storiesAndGuides": "Stories & Guides",
+    "noListings": "No listings from {country} yet — check back soon."
+  },
+  "auth": {
+    "genericError": "Something went wrong. Please try again.",
+    "welcomeBack": "Welcome back",
+    "signInTitle": "Sign in to iCoffeeHub",
+    "email": "Email",
+    "password": "Password",
+    "signingIn": "Signing in…",
+    "newToHub": "New to iCoffeeHub?",
+    "createAccount": "Create an account",
+    "joinHub": "Join iCoffeeHub",
+    "createAccountTitle": "Create your account",
+    "imCoffeeLover": "I'm a coffee lover",
+    "imSeller": "I'm a seller",
+    "contactName": "Contact name",
+    "fullName": "Full name",
+    "passwordHint": "At least 8 characters.",
+    "creatingAccount": "Creating account…",
+    "createSellerAccount": "Create seller account",
+    "alreadyHaveAccount": "Already have an account?"
+  },
+  "aiAssistant": {
+    "eyebrow": "AI Coffee Assistant",
+    "signInTitle": "Sign in to get personalized picks",
+    "signInBody": "Take a short taste quiz and we'll recommend coffees from across the marketplace that match your palate.",
+    "title": "Find your next favorite cup",
+    "disclaimer": "These are AI-generated suggestions based on your answers below, not verified facts — always check each product's listing for exact origin and roast details.",
+    "tasteQuizTab": "Taste Quiz",
+    "askQuestionTab": "Ask a Question",
+    "preferredRoasts": "Preferred roast levels",
+    "flavorsYouLove": "Flavors you love",
+    "flavorsToAvoid": "Flavors you'd rather avoid",
+    "acidity": "Acidity",
+    "smooth": "Smooth",
+    "bright": "Bright",
+    "body": "Body",
+    "light": "Light",
+    "full": "Full",
+    "matching": "Matching you with coffees…",
+    "getRecommendations": "Get my recommendations",
+    "recommendedForYou": "Recommended for you",
+    "noMatches": "No matches yet — try adjusting your answers."
+  },
+  "aiChat": {
+    "emptyPrompt": "Ask about brewing troubleshooting, equipment, or coffee origins — e.g. \"why is my coffee bitter?\"",
+    "typing": "Typing…",
+    "placeholder": "Ask a coffee question…",
+    "send": "Send"
+  },
+  "account": {
+    "overviewTitle": "Account Overview",
+    "overviewSubtitle": "Manage your orders, wishlist and tasting journal.",
+    "ordersPlaced": "Orders placed",
+    "totalSpent": "Total spent",
+    "retakeQuiz": "Retake taste quiz",
+    "retakeQuizBody": "Get fresh AI recommendations",
+    "recentOrders": "Recent Orders",
+    "noOrdersYet": "No orders yet.",
+    "startShopping": "Start shopping",
+    "orderNumber": "Order #{number}",
+    "totalInclShipping": "Total (incl. shipping)",
+    "shippingTo": "Shipping to {city}, {country}",
+    "trackManage": "Track / manage",
+    "greeting": "Hi, {name}",
+    "nav": {
+      "overview": "Overview",
+      "orders": "Orders",
+      "wishlist": "Wishlist",
+      "collections": "Collections",
+      "journal": "Tasting Journal",
+      "support": "Support"
+    }
+  },
+  "orderDetail": {
+    "returnSubmitted": "Return request submitted.",
+    "returnError": "Could not submit return request.",
+    "disputeFiled": "Dispute filed — our support team will review it.",
+    "disputeError": "Could not file dispute.",
+    "items": "Items",
+    "requestReturn": "Request return",
+    "shipping": "Shipping",
+    "total": "Total",
+    "returnTitle": "Return {sku}",
+    "returnPlaceholder": "Why are you returning this item?",
+    "submitReturnRequest": "Submit return request",
+    "shipmentTracking": "Shipment Tracking",
+    "noShipments": "No shipments yet — the seller hasn't marked this order as shipped.",
+    "carrier": "Carrier",
+    "havingProblem": "Having a problem with this order?",
+    "fileDispute": "File a dispute",
+    "disputePlaceholder": "What went wrong?",
+    "submitDispute": "Submit dispute"
+  },
+  "collections": {
+    "intro": "Curated lists of coffees — great for gifting ideas, a brewing project, or coffees to try next. Add products from any product page.",
+    "newCollection": "New collection",
+    "namePlaceholder": "Name",
+    "descriptionPlaceholder": "Description (optional)",
+    "makeShareable": "Make this collection shareable via a public link",
+    "creating": "Creating…",
+    "createCollection": "Create collection",
+    "public": "Public",
+    "productCountOne": "{count} product",
+    "productCountOther": "{count} products",
+    "empty": "No collections yet."
+  },
+  "journal": {
+    "intro": "Notes you save from product pages appear here — a running record of what you've tasted.",
+    "empty": "No tasting notes yet."
+  },
+  "support": {
+    "intro": "Questions about an order, a seller, or the platform? We're here to help.",
+    "newTicket": "New ticket",
+    "subject": "Subject",
+    "howCanWeHelp": "How can we help?",
+    "sending": "Sending…",
+    "submitTicket": "Submit ticket",
+    "addReply": "Add a reply…",
+    "empty": "No support tickets yet."
+  },
+  "wishlist": {
+    "empty": "Nothing saved yet. Save a coffee from its product page to see it here."
+  },
+  "journalNote": {
+    "saved": "Saved to tasting journal ✓",
+    "addNote": "+ Add a tasting journal note",
+    "placeholder": "What stood out about this cup?",
+    "rating": "Rating",
+    "saving": "Saving…",
+    "saveNote": "Save note"
+  },
+  "collectionPicker": {
+    "saveToCollection": "+ Save to a collection",
+    "noCollections": "No collections yet — create one from",
+    "yourAccount": "your account"
+  },
+  "calculator": {
+    "eyebrow": "Coffee Tools",
+    "title": "Brew Ratio Calculator",
+    "subtitle": "Find the right coffee-to-water ratio for your brewing method, or dial in your own.",
+    "brewMethod": "Brew method",
+    "customRatio": "Custom ratio",
+    "coffeeGrams": "Coffee (g)",
+    "waterGrams": "Water (g)",
+    "hint": "Change any value and the others update automatically.",
+    "resultTitle": "Your Brew",
+    "ratio": "Ratio",
+    "presets": {
+      "v60": "V60",
+      "chemex": "Chemex",
+      "frenchPress": "French Press",
+      "aeropress": "Aeropress",
+      "coldBrew": "Cold Brew",
+      "mokaPot": "Moka Pot",
+      "espresso": "Espresso"
+    }
+  }
+}

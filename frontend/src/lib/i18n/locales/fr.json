@@ -1,0 +1,399 @@
+{
+  "common": {
+    "cart": "Panier",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "join": "Rejoindre",
+    "language": "Langue",
+    "currencyLabel": "USD",
+    "loading": "Chargement…",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "countries": {
+      "ethiopia": "Éthiopie",
+      "kenya": "Kenya",
+      "colombia": "Colombie",
+      "brazil": "Brésil",
+      "guatemala": "Guatemala",
+      "indonesia": "Indonésie"
+    }
+  },
+  "header": {
+    "navMarketplace": "Marché",
+    "navEncyclopedia": "Encyclopédie",
+    "navAiAssistant": "Assistant IA",
+    "searchPlaceholder": "Rechercher des origines, des grains, des torréfacteurs…",
+    "adminDashboard": "Tableau de bord administrateur",
+    "sellerPortal": "Portail vendeur",
+    "myAccount": "Mon compte"
+  },
+  "footer": {
+    "tagline": "Tout sur le café. Un hub mondial. Une place de marché, une encyclopédie et un assistant IA qui relient fermes de café, torréfacteurs et passionnés du monde entier.",
+    "originCountries": "Pays d'origine",
+    "discover": "Découvrir",
+    "discoverMarketplace": "Marché",
+    "discoverEncyclopedia": "Encyclopédie du café",
+    "discoverAiAssistant": "Assistant IA du café",
+    "discoverBrewGuides": "Guides de préparation",
+    "business": "Entreprises",
+    "businessSell": "Vendre sur iCoffeeHub",
+    "businessSupport": "Aide et assistance",
+    "businessTerms": "Conditions d'utilisation",
+    "businessPrivacy": "Politique de confidentialité",
+    "copyright": "© {year} iCoffeeHub.com — Tous droits réservés."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Place de marché et encyclopédie mondiale du café",
+      "titleLine1": "Tout sur le café.",
+      "titleLine2": "Un hub mondial.",
+      "subtitle": "Découvrez des fermes et des torréfacteurs vérifiés, retracez chaque grain jusqu'à son origine, et laissez notre assistant IA vous guider vers votre prochaine tasse préférée.",
+      "ctaMarketplace": "Explorer le marché",
+      "ctaQuiz": "Faire le quiz de goût"
+    },
+    "trust": {
+      "verifiedSellers": { "label": "Vendeurs vérifiés", "desc": "Fermes et torréfacteurs examinés avant leur inscription" },
+      "freshRoastDates": { "label": "Dates de torréfaction récentes", "desc": "Chaque sachet indique précisément sa date de torréfaction" },
+      "originTransparency": { "label": "Transparence sur l'origine", "desc": "Ferme, altitude et procédé pour chaque produit" },
+      "aiGuidedDiscovery": { "label": "Découverte guidée par IA", "desc": "Des sélections personnalisées selon votre profil gustatif" }
+    },
+    "originSection": {
+      "eyebrow": "Explorer par origine",
+      "title": "Le café a un lieu de naissance pour chaque tasse"
+    },
+    "featuredSection": {
+      "eyebrow": "Sélection du moment",
+      "title": "Cafés en vedette cette semaine",
+      "action": "Voir tout"
+    },
+    "aiTeaser": {
+      "eyebrow": "Assistant IA du café",
+      "title": "Vous ne savez pas quoi préparer ensuite ?",
+      "body": "Répondez à quelques questions rapides sur la torréfaction, le corps et les saveurs, et nous vous proposerons des cafés de notre marché mondial — en distinguant clairement nos recommandations des faits présentés dans chaque annonce.",
+      "cta": "Commencer le quiz de goût"
+    },
+    "sellerCta": {
+      "title": "Vous êtes une ferme, un torréfacteur ou une boutique de café ?",
+      "body": "Publiez votre café sur iCoffeeHub et touchez des clients du monde entier grâce à des données d'origine transparentes et une logistique de zones de livraison intégrée.",
+      "cta": "Commencer à vendre"
+    },
+    "learnSection": {
+      "eyebrow": "Apprendre",
+      "title": "Extrait de l'encyclopédie du café",
+      "action": "Explorer l'encyclopédie"
+    }
+  },
+  "marketplace": {
+    "resultsFor": "Résultats pour « {query} »",
+    "browseTitle": "Parcourir les cafés de vendeurs vérifiés",
+    "filterOrigin": "Pays d'origine",
+    "allOrigins": "Toutes les origines",
+    "filterRoast": "Niveau de torréfaction",
+    "filterProcess": "Procédé",
+    "clearFilters": "Effacer tous les filtres",
+    "coffeesFound": "{count} cafés trouvés",
+    "noResultsTitle": "Aucun café ne correspond à ces filtres",
+    "noResultsBody": "Essayez de supprimer un filtre ou de rechercher une autre origine.",
+    "sorts": {
+      "newest": "Plus récents",
+      "price_asc": "Prix : croissant",
+      "price_desc": "Prix : décroissant",
+      "rating": "Mieux notés"
+    }
+  },
+  "product": {
+    "featuredBadge": "En vedette",
+    "roastBadge": "Torréfaction {roast}",
+    "specs": {
+      "origin": "Origine",
+      "farm": "Ferme",
+      "variety": "Variété",
+      "altitude": "Altitude",
+      "process": "Procédé",
+      "roast": "Torréfaction"
+    },
+    "roastedOn": "Torréfié le {date}",
+    "reviewsHeading": "Avis",
+    "verifiedSeller": "Vendeur vérifié"
+  },
+  "productActions": {
+    "bagSize": "Taille du sachet",
+    "decreaseQuantity": "Diminuer la quantité",
+    "increaseQuantity": "Augmenter la quantité",
+    "inStock": "{count} en stock",
+    "outOfStock": "Rupture de stock",
+    "added": "Ajouté au panier ✓",
+    "adding": "Ajout en cours…",
+    "addToCart": "Ajouter au panier — {price}",
+    "removeFromWishlist": "Retirer de la liste de souhaits",
+    "saveToWishlist": "Enregistrer dans la liste de souhaits"
+  },
+  "reviews": {
+    "submitError": "Impossible d'envoyer l'avis.",
+    "empty": "Aucun avis pour l'instant — soyez le premier à partager vos notes de dégustation.",
+    "writeReview": "Rédiger un avis",
+    "signInPrompt": "Connectez-vous pour laisser un avis de dégustation.",
+    "alreadyReviewed": "Vous avez déjà évalué ce café. Merci !",
+    "starsAriaLabel": "{count} étoiles",
+    "placeholder": "Qu'avez-vous goûté ?",
+    "submitting": "Envoi en cours…",
+    "submit": "Envoyer l'avis",
+    "ratingAriaLabel": "{value} sur 5 étoiles"
+  },
+  "coffeeOptions": {
+    "roastLevels": {
+      "light": "Claire",
+      "medium_light": "Moyennement claire",
+      "medium": "Moyenne",
+      "medium_dark": "Moyennement foncée",
+      "dark": "Foncée"
+    },
+    "processingMethods": {
+      "washed": "Lavé",
+      "natural": "Naturel",
+      "honey": "Miel",
+      "anaerobic": "Anaérobie",
+      "wet_hulled": "Décortiqué humide",
+      "decaf": "Décaféiné"
+    },
+    "flavorNotes": {
+      "chocolate": "Chocolat",
+      "caramel": "Caramel",
+      "citrus": "Agrumes",
+      "berry": "Fruits rouges",
+      "stone_fruit": "Fruits à noyau",
+      "floral": "Floral",
+      "nutty": "Noisette",
+      "spice": "Épices",
+      "honey": "Miel",
+      "winey": "Vineux",
+      "tropical_fruit": "Fruits tropicaux",
+      "herbal": "Herbacé",
+      "smoky": "Fumé",
+      "earthy": "Terreux",
+      "vanilla": "Vanille"
+    }
+  },
+  "cart": {
+    "signInTitle": "Connectez-vous pour voir votre panier",
+    "emptyTitle": "Votre panier est vide",
+    "emptyBody": "Explorez le marché pour trouver votre prochain café préféré.",
+    "browseMarketplace": "Parcourir le marché",
+    "title": "Votre panier",
+    "removeItem": "Retirer l'article",
+    "orderSummary": "Récapitulatif de la commande",
+    "subtotal": "Sous-total",
+    "shippingNote": "Les frais de livraison sont calculés au moment du paiement en fonction du pays de livraison.",
+    "proceedToCheckout": "Passer à la caisse"
+  },
+  "checkout": {
+    "signInTitle": "Connectez-vous pour passer à la caisse",
+    "orderConfirmed": "Commande confirmée",
+    "thankYou": "Merci, {name} !",
+    "orderPlaced": "La commande n°{orderNumber} a été passée pour {total}.",
+    "viewOrders": "Voir mes commandes",
+    "keepBrowsing": "Continuer mes achats",
+    "couponError": "Impossible d'appliquer le code promo.",
+    "checkoutFailed": "Échec du paiement. Veuillez réessayer.",
+    "title": "Paiement",
+    "shippingAddress": "Adresse de livraison",
+    "fullName": "Nom complet",
+    "addressLine1": "Adresse (ligne 1)",
+    "addressLine2": "Adresse (ligne 2, facultatif)",
+    "city": "Ville",
+    "postalCode": "Code postal",
+    "country": "Pays",
+    "selectCountry": "Sélectionner un pays",
+    "phone": "Téléphone (facultatif)",
+    "couponCode": "Code promo (facultatif)",
+    "couponPlaceholder": "ex. WELCOME10",
+    "checkingCoupon": "Vérification…",
+    "apply": "Appliquer",
+    "couponApplied": "Code promo {code} appliqué — {discount} de réduction.",
+    "placingOrder": "Passage de la commande…",
+    "placeOrder": "Passer la commande — {total}",
+    "paymentSimulated": "Le paiement est simulé dans cette version de démonstration — aucune donnée de carte réelle n'est collectée.",
+    "discount": "Réduction ({code})",
+    "totalBeforeShipping": "Total avant livraison",
+    "shippingPerSellerNote": "Les frais de livraison sont calculés par vendeur en fonction de votre pays."
+  },
+  "encyclopedia": {
+    "eyebrow": "Apprendre",
+    "title": "L'encyclopédie du café",
+    "subtitle": "Origines, science de la préparation et culture derrière chaque tasse — rédigé pour vous aider à déguster avec plus d'intention.",
+    "empty": "Aucun article publié dans cette catégorie pour le moment.",
+    "readMore": "Lire la suite",
+    "bodyComingSoon": "Le contenu complet de l'article arrive bientôt.",
+    "exploreOrigin": "Explorer cette origine",
+    "types": {
+      "all": "Tout",
+      "encyclopedia": "Encyclopédie",
+      "country": "Origines",
+      "brew_guide": "Guides de préparation",
+      "recipe": "Recettes",
+      "course": "Cours",
+      "news": "Actualités"
+    }
+  },
+  "country": {
+    "coffeeFrom": "Café de {country}",
+    "storiesAndGuides": "Histoires et guides",
+    "noListings": "Aucune annonce de {country} pour le moment — revenez bientôt."
+  },
+  "auth": {
+    "genericError": "Une erreur s'est produite. Veuillez réessayer.",
+    "welcomeBack": "Content de vous revoir",
+    "signInTitle": "Connexion à iCoffeeHub",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "signingIn": "Connexion en cours…",
+    "newToHub": "Nouveau sur iCoffeeHub ?",
+    "createAccount": "Créer un compte",
+    "joinHub": "Rejoindre iCoffeeHub",
+    "createAccountTitle": "Créez votre compte",
+    "imCoffeeLover": "Je suis un amateur de café",
+    "imSeller": "Je suis un vendeur",
+    "contactName": "Nom du contact",
+    "fullName": "Nom complet",
+    "passwordHint": "Au moins 8 caractères.",
+    "creatingAccount": "Création du compte…",
+    "createSellerAccount": "Créer un compte vendeur",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?"
+  },
+  "aiAssistant": {
+    "eyebrow": "Assistant IA du café",
+    "signInTitle": "Connectez-vous pour obtenir des recommandations personnalisées",
+    "signInBody": "Faites un court quiz de goût et nous vous recommanderons des cafés de tout le marché correspondant à votre palais.",
+    "title": "Trouvez votre prochaine tasse préférée",
+    "disclaimer": "Il s'agit de suggestions générées par IA à partir de vos réponses ci-dessous, et non de faits vérifiés — vérifiez toujours l'annonce de chaque produit pour connaître l'origine et la torréfaction exactes.",
+    "tasteQuizTab": "Quiz de goût",
+    "askQuestionTab": "Poser une question",
+    "preferredRoasts": "Niveaux de torréfaction préférés",
+    "flavorsYouLove": "Saveurs que vous aimez",
+    "flavorsToAvoid": "Saveurs à éviter",
+    "acidity": "Acidité",
+    "smooth": "Douce",
+    "bright": "Vive",
+    "body": "Corps",
+    "light": "Léger",
+    "full": "Corsé",
+    "matching": "Recherche de cafés correspondant à votre profil…",
+    "getRecommendations": "Obtenir mes recommandations",
+    "recommendedForYou": "Recommandé pour vous",
+    "noMatches": "Aucune correspondance pour l'instant — essayez d'ajuster vos réponses."
+  },
+  "aiChat": {
+    "emptyPrompt": "Posez une question sur le dépannage de la préparation, l'équipement ou les origines du café — par ex. « pourquoi mon café est-il amer ? »",
+    "typing": "En train d'écrire…",
+    "placeholder": "Posez une question sur le café…",
+    "send": "Envoyer"
+  },
+  "account": {
+    "overviewTitle": "Aperçu du compte",
+    "overviewSubtitle": "Gérez vos commandes, votre liste de souhaits et votre journal de dégustation.",
+    "ordersPlaced": "Commandes passées",
+    "totalSpent": "Total dépensé",
+    "retakeQuiz": "Refaire le quiz de goût",
+    "retakeQuizBody": "Obtenez de nouvelles recommandations IA",
+    "recentOrders": "Commandes récentes",
+    "noOrdersYet": "Aucune commande pour le moment.",
+    "startShopping": "Commencer vos achats",
+    "orderNumber": "Commande n°{number}",
+    "totalInclShipping": "Total (livraison incluse)",
+    "shippingTo": "Livraison à {city}, {country}",
+    "trackManage": "Suivre / gérer",
+    "greeting": "Bonjour, {name}",
+    "nav": {
+      "overview": "Aperçu",
+      "orders": "Commandes",
+      "wishlist": "Liste de souhaits",
+      "collections": "Collections",
+      "journal": "Journal de dégustation",
+      "support": "Assistance"
+    }
+  },
+  "orderDetail": {
+    "returnSubmitted": "Demande de retour envoyée.",
+    "returnError": "Impossible d'envoyer la demande de retour.",
+    "disputeFiled": "Litige déposé — notre équipe d'assistance va l'examiner.",
+    "disputeError": "Impossible de déposer le litige.",
+    "items": "Articles",
+    "requestReturn": "Demander un retour",
+    "shipping": "Livraison",
+    "total": "Total",
+    "returnTitle": "Retourner {sku}",
+    "returnPlaceholder": "Pourquoi retournez-vous cet article ?",
+    "submitReturnRequest": "Envoyer la demande de retour",
+    "shipmentTracking": "Suivi de l'expédition",
+    "noShipments": "Aucune expédition pour le moment — le vendeur n'a pas encore marqué cette commande comme expédiée.",
+    "carrier": "Transporteur",
+    "havingProblem": "Un problème avec cette commande ?",
+    "fileDispute": "Déposer un litige",
+    "disputePlaceholder": "Qu'est-ce qui n'a pas fonctionné ?",
+    "submitDispute": "Envoyer le litige"
+  },
+  "collections": {
+    "intro": "Des listes de cafés organisées — idéales pour des idées cadeaux, un projet de préparation, ou des cafés à essayer plus tard. Ajoutez des produits depuis n'importe quelle page produit.",
+    "newCollection": "Nouvelle collection",
+    "namePlaceholder": "Nom",
+    "descriptionPlaceholder": "Description (facultatif)",
+    "makeShareable": "Rendre cette collection partageable via un lien public",
+    "creating": "Création en cours…",
+    "createCollection": "Créer la collection",
+    "public": "Publique",
+    "productCountOne": "{count} produit",
+    "productCountOther": "{count} produits",
+    "empty": "Aucune collection pour le moment."
+  },
+  "journal": {
+    "intro": "Les notes que vous enregistrez depuis les pages produit apparaissent ici — un historique de ce que vous avez dégusté.",
+    "empty": "Aucune note de dégustation pour le moment."
+  },
+  "support": {
+    "intro": "Des questions sur une commande, un vendeur ou la plateforme ? Nous sommes là pour vous aider.",
+    "newTicket": "Nouveau ticket",
+    "subject": "Sujet",
+    "howCanWeHelp": "Comment pouvons-nous vous aider ?",
+    "sending": "Envoi en cours…",
+    "submitTicket": "Envoyer le ticket",
+    "addReply": "Ajouter une réponse…",
+    "empty": "Aucun ticket d'assistance pour le moment."
+  },
+  "wishlist": {
+    "empty": "Rien d'enregistré pour le moment. Enregistrez un café depuis sa page produit pour le retrouver ici."
+  },
+  "journalNote": {
+    "saved": "Enregistré dans le journal de dégustation ✓",
+    "addNote": "+ Ajouter une note au journal de dégustation",
+    "placeholder": "Qu'est-ce qui vous a marqué dans cette tasse ?",
+    "rating": "Note",
+    "saving": "Enregistrement…",
+    "saveNote": "Enregistrer la note"
+  },
+  "collectionPicker": {
+    "saveToCollection": "+ Enregistrer dans une collection",
+    "noCollections": "Aucune collection pour le moment — créez-en une depuis",
+    "yourAccount": "votre compte"
+  },
+  "calculator": {
+    "eyebrow": "Outils café",
+    "title": "Calculateur de ratio café/eau",
+    "subtitle": "Trouvez le bon ratio café/eau pour votre méthode de préparation, ou personnalisez le vôtre.",
+    "brewMethod": "Méthode de préparation",
+    "customRatio": "Ratio personnalisé",
+    "coffeeGrams": "Café (g)",
+    "waterGrams": "Eau (g)",
+    "hint": "Modifiez une valeur et les autres se mettent à jour automatiquement.",
+    "resultTitle": "Votre préparation",
+    "ratio": "Ratio",
+    "presets": {
+      "v60": "V60",
+      "chemex": "Chemex",
+      "frenchPress": "Cafetière à piston",
+      "aeropress": "Aeropress",
+      "coldBrew": "Cold Brew",
+      "mokaPot": "Cafetière italienne",
+      "espresso": "Espresso"
+    }
+  }
+}

@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 import { formatMoney } from '@/lib/format';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { Order } from '@/lib/types';
 
 export default function AccountOverviewPage() {
+  const { t } = useLanguage();
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
@@ -16,27 +18,27 @@ export default function AccountOverviewPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-heading text-2xl font-bold text-espresso-800">Account Overview</h1>
-        <p className="mt-1 text-sm text-espresso-500">Manage your orders, wishlist and tasting journal.</p>
+        <h1 className="font-heading text-2xl font-bold text-espresso-800">{t('account.overviewTitle')}</h1>
+        <p className="mt-1 text-sm text-espresso-500">{t('account.overviewSubtitle')}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Orders placed" value={orders.length} />
+        <StatCard label={t('account.ordersPlaced')} value={orders.length} />
         <StatCard
-          label="Total spent"
+          label={t('account.totalSpent')}
           value={formatMoney(orders.reduce((sum, o) => sum + o.total, 0))}
         />
         <Link href="/ai-assistant" className="card flex flex-col justify-center p-5 hover:shadow-card-hover">
-          <p className="font-heading text-sm font-bold text-espresso-800">Retake taste quiz</p>
-          <p className="mt-1 text-xs text-espresso-500">Get fresh AI recommendations &rarr;</p>
+          <p className="font-heading text-sm font-bold text-espresso-800">{t('account.retakeQuiz')}</p>
+          <p className="mt-1 text-xs text-espresso-500">{t('account.retakeQuizBody')} &rarr;</p>
         </Link>
       </div>
 
       <div>
-        <h2 className="font-heading text-lg font-bold text-espresso-800">Recent Orders</h2>
+        <h2 className="font-heading text-lg font-bold text-espresso-800">{t('account.recentOrders')}</h2>
         {orders.length === 0 ? (
           <p className="mt-3 text-sm text-espresso-500">
-            No orders yet. <Link href="/marketplace" className="font-semibold text-espresso-800 underline">Start shopping</Link>
+            {t('account.noOrdersYet')} <Link href="/marketplace" className="font-semibold text-espresso-800 underline">{t('account.startShopping')}</Link>
           </p>
         ) : (
           <div className="mt-3 space-y-3">

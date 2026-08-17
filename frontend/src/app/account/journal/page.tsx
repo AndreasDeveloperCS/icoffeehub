@@ -1,20 +1,20 @@
 'use client';
 
 import { useAuth } from '@/lib/auth-context';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function JournalPage() {
   const { user } = useAuth();
+  const { t } = useLanguage();
   const entries = [...(user?.tastingJournal ?? [])].reverse();
 
   return (
     <div>
-      <h1 className="font-heading text-2xl font-bold text-espresso-800">Tasting Journal</h1>
-      <p className="mt-1 text-sm text-espresso-500">
-        Notes you save from product pages appear here — a running record of what you&apos;ve tasted.
-      </p>
+      <h1 className="font-heading text-2xl font-bold text-espresso-800">{t('account.nav.journal')}</h1>
+      <p className="mt-1 text-sm text-espresso-500">{t('journal.intro')}</p>
 
       {entries.length === 0 ? (
-        <p className="mt-4 text-sm text-espresso-500">No tasting notes yet.</p>
+        <p className="mt-4 text-sm text-espresso-500">{t('journal.empty')}</p>
       ) : (
         <div className="mt-5 space-y-3">
           {entries.map((e, i) => (

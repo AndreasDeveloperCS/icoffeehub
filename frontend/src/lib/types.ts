@@ -52,6 +52,8 @@ export interface Product {
   seoTitle?: string;
   seoDescription?: string;
   createdAt: string;
+  sellerVerified?: boolean;
+  sellerName?: string;
 }
 
 export interface ProductListResponse {

@@ -4,18 +4,20 @@ import Link from 'next/link';
 import { useAuth } from '@/lib/auth-context';
 import { useCart } from '@/lib/cart-context';
 import { formatMoney } from '@/lib/format';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function CartPage() {
   const { user, loading } = useAuth();
   const { cart, updateItem, removeItem } = useCart();
+  const { t } = useLanguage();
 
-  if (loading) return <div className="container-page py-16 text-center text-espresso-400">Loading…</div>;
+  if (loading) return <div className="container-page py-16 text-center text-espresso-400">{t('common.loading')}</div>;
 
   if (!user) {
     return (
       <div className="container-page flex flex-col items-center gap-4 py-24 text-center">
-        <h1 className="font-heading text-2xl font-bold text-espresso-800">Sign in to view your cart</h1>
-        <Link href="/login" className="btn-primary">Sign in</Link>
+        <h1 className="font-heading text-2xl font-bold text-espresso-800">{t('cart.signInTitle')}</h1>
+        <Link href="/login" className="btn-primary">{t('common.signIn')}</Link>
       </div>
     );
   }
@@ -26,16 +28,16 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="container-page flex flex-col items-center gap-4 py-24 text-center">
-        <h1 className="font-heading text-2xl font-bold text-espresso-800">Your cart is empty</h1>
-        <p className="text-sm text-espresso-500">Explore the marketplace to find your next favorite coffee.</p>
-        <Link href="/marketplace" className="btn-primary">Browse the marketplace</Link>
+        <h1 className="font-heading text-2xl font-bold text-espresso-800">{t('cart.emptyTitle')}</h1>
+        <p className="text-sm text-espresso-500">{t('cart.emptyBody')}</p>
+        <Link href="/marketplace" className="btn-primary">{t('cart.browseMarketplace')}</Link>
       </div>
     );
   }
 
   return (
     <div className="container-page py-10">
-      <h1 className="font-heading text-3xl font-bold text-espresso-800">Your Cart</h1>
+      <h1 className="font-heading text-3xl font-bold text-espresso-800">{t('cart.title')}</h1>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
         <div className="space-y-4">
@@ -67,7 +69,7 @@ export default function CartPage() {
               <button
                 onClick={() => removeItem(item.productId, item.sku)}
                 className="text-espresso-300 hover:text-red-600"
-                aria-label="Remove item"
+                aria-label={t('cart.removeItem')}
               >
                 ✕
               </button>
@@ -76,14 +78,14 @@ export default function CartPage() {
         </div>
 
         <div className="card h-fit p-6">
-          <h2 className="font-heading text-lg font-bold text-espresso-800">Order Summary</h2>
+          <h2 className="font-heading text-lg font-bold text-espresso-800">{t('cart.orderSummary')}</h2>
           <div className="mt-4 flex justify-between text-sm text-espresso-600">
-            <span>Subtotal</span>
+            <span>{t('cart.subtotal')}</span>
             <span className="font-semibold text-espresso-800">{formatMoney(subtotal)}</span>
           </div>
-          <p className="mt-1 text-xs text-espresso-400">Shipping is calculated at checkout based on delivery country.</p>
+          <p className="mt-1 text-xs text-espresso-400">{t('cart.shippingNote')}</p>
           <Link href="/checkout" className="btn-primary mt-5 w-full">
-            Proceed to Checkout
+            {t('cart.proceedToCheckout')}
           </Link>
         </div>
       </div>

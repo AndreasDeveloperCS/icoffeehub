@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { useAuth } from '@/lib/auth-context';
 import { api, ApiError } from '@/lib/api';
 import { StarRating } from './StarRating';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { Review } from '@/lib/types';
 
 export function ReviewSection({ productId, initialReviews }: { productId: string; initialReviews: Review[] }) {
   const { user } = useAuth();
+  const { t } = useLanguage();
   const [reviews, setReviews] = useState(initialReviews);
   const [rating, setRating] = useState(5);
   const [body, setBody] = useState('');
@@ -29,7 +31,7 @@ export function ReviewSection({ productId, initialReviews }: { productId: string
       setBody('');
       setRating(5);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'Could not submit review.');
+      setError(err instanceof ApiError ? err.message : t('reviews.submitError'));
     } finally {
       setSubmitting(false);
     }
@@ -39,7 +41,7 @@ export function ReviewSection({ productId, initialReviews }: { productId: string
     <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
       <div className="space-y-6">
         {reviews.length === 0 ? (
-          <p className="text-sm text-espresso-500">No reviews yet — be the first to share your tasting notes.</p>
+          <p className="text-sm text-espresso-500">{t('reviews.empty')}</p>
         ) : (
           reviews.map((r) => (
             <div key={r._id} className="border-b border-espresso-100 pb-6 last:border-0">
@@ -57,29 +59,29 @@ export function ReviewSection({ productId, initialReviews }: { productId: string
       </div>
 
       <div className="card h-fit p-5">
-        <h3 className="font-heading text-sm font-bold text-espresso-800">Write a review</h3>
+        <h3 className="font-heading text-sm font-bold text-espresso-800">{t('reviews.writeReview')}</h3>
         {!user ? (
-          <p className="mt-3 text-sm text-espresso-500">Sign in to leave a tasting review.</p>
+          <p className="mt-3 text-sm text-espresso-500">{t('reviews.signInPrompt')}</p>
         ) : alreadyReviewed ? (
-          <p className="mt-3 text-sm text-espresso-500">You&apos;ve already reviewed this coffee. Thank you!</p>
+          <p className="mt-3 text-sm text-espresso-500">{t('reviews.alreadyReviewed')}</p>
         ) : (
           <form onSubmit={onSubmit} className="mt-3 space-y-3">
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((n) => (
-                <button key={n} type="button" onClick={() => setRating(n)} aria-label={`${n} stars`}>
+                <button key={n} type="button" onClick={() => setRating(n)} aria-label={t('reviews.starsAriaLabel', { count: n })}>
                   <StarRating value={n <= rating ? 5 : 0} size={20} />
                 </button>
               ))}
             </div>
             <textarea
               className="input min-h-[90px]"
-              placeholder="What did you taste?"
+              placeholder={t('reviews.placeholder')}
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
             {error && <p className="text-xs text-red-600">{error}</p>}
             <button type="submit" disabled={submitting} className="btn-primary w-full">
-              {submitting ? 'Submitting…' : 'Submit review'}
+              {submitting ? t('reviews.submitting') : t('reviews.submit')}
             </button>
           </form>
         )}

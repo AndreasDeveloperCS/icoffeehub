@@ -116,7 +116,12 @@ export class ProductsService {
   async findBySlug(slug: string) {
     const product = await this.productModel.findOne({ slug, status: ProductStatus.ACTIVE }).exec();
     if (!product) throw new NotFoundException('Product not found');
-    return product;
+    const seller = await this.sellersService.findById(String(product.sellerId));
+    return {
+      ...product.toObject(),
+      sellerVerified: seller?.verified ?? false,
+      sellerName: seller?.companyName,
+    };
   }
 
   findById(id: string) {

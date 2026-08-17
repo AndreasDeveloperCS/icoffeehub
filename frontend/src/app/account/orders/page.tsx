@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 import { formatMoney } from '@/lib/format';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { Order } from '@/lib/types';
 
 export default function OrdersPage() {
+  const { t } = useLanguage();
   const [orders, setOrders] = useState<Order[] | null>(null);
 
   useEffect(() => {
@@ -15,13 +17,13 @@ export default function OrdersPage() {
 
   return (
     <div>
-      <h1 className="font-heading text-2xl font-bold text-espresso-800">Orders</h1>
+      <h1 className="font-heading text-2xl font-bold text-espresso-800">{t('account.nav.orders')}</h1>
 
       {!orders ? (
-        <p className="mt-4 text-sm text-espresso-400">Loading…</p>
+        <p className="mt-4 text-sm text-espresso-400">{t('common.loading')}</p>
       ) : orders.length === 0 ? (
         <p className="mt-4 text-sm text-espresso-500">
-          No orders yet. <Link href="/marketplace" className="font-semibold underline">Start shopping</Link>
+          {t('account.noOrdersYet')} <Link href="/marketplace" className="font-semibold underline">{t('account.startShopping')}</Link>
         </p>
       ) : (
         <div className="mt-5 space-y-4">
@@ -29,7 +31,7 @@ export default function OrdersPage() {
             <div key={o._id} className="card p-5">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
-                  <p className="font-semibold text-espresso-800">Order #{o._id.slice(-6).toUpperCase()}</p>
+                  <p className="font-semibold text-espresso-800">{t('account.orderNumber', { number: o._id.slice(-6).toUpperCase() })}</p>
                   <p className="text-xs text-espresso-400">{new Date(o.createdAt).toLocaleString()}</p>
                 </div>
                 <span className="badge bg-forest-50 text-forest-700 capitalize">{o.status}</span>
@@ -43,15 +45,15 @@ export default function OrdersPage() {
                 ))}
               </div>
               <div className="mt-3 flex justify-between border-t border-espresso-100 pt-3 text-sm font-semibold text-espresso-800">
-                <span>Total (incl. shipping)</span>
+                <span>{t('account.totalInclShipping')}</span>
                 <span>{formatMoney(o.total, o.currency)}</span>
               </div>
               <div className="mt-2 flex items-center justify-between">
                 <p className="text-xs text-espresso-400">
-                  Shipping to {o.shippingAddress.city}, {o.shippingAddress.country}
+                  {t('account.shippingTo', { city: o.shippingAddress.city, country: o.shippingAddress.country })}
                 </p>
                 <Link href={`/account/orders/${o._id}`} className="text-xs font-semibold text-espresso-600 hover:underline">
-                  Track / manage &rarr;
+                  {t('account.trackManage')} &rarr;
                 </Link>
               </div>
             </div>

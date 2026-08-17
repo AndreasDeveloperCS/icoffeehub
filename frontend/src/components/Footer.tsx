@@ -1,48 +1,61 @@
+'use client';
+
 import Link from 'next/link';
 import { LogoWordmark } from './Logo';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { LOCALE_LABELS } from '@/lib/i18n/config';
 
-const ORIGIN_COUNTRIES = ['Ethiopia', 'Kenya', 'Colombia', 'Brazil', 'Guatemala', 'Indonesia'];
+const ORIGIN_COUNTRIES = [
+  { key: 'ethiopia', slug: 'ethiopia' },
+  { key: 'kenya', slug: 'kenya' },
+  { key: 'colombia', slug: 'colombia' },
+  { key: 'brazil', slug: 'brazil' },
+  { key: 'guatemala', slug: 'guatemala' },
+  { key: 'indonesia', slug: 'indonesia' },
+];
 
 export function Footer() {
+  const { t, locale } = useLanguage();
+
   return (
     <footer className="mt-24 border-t border-espresso-100 bg-espresso-800 text-cream-100">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <LogoWordmark className="[&_span]:text-cream-50 [&_span_span]:text-gold-400" />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-200/80">
-            Everything about coffee. One global hub. A marketplace, encyclopedia and AI assistant connecting coffee
-            farms, roasters and enthusiasts worldwide.
-          </p>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-200/80">{t('footer.tagline')}</p>
         </div>
 
         <FooterColumn
-          title="Origin Countries"
-          links={ORIGIN_COUNTRIES.map((c) => ({ label: c, href: `/country/${c.toLowerCase()}` }))}
+          title={t('footer.originCountries')}
+          links={ORIGIN_COUNTRIES.map((c) => ({ label: t(`common.countries.${c.key}`), href: `/country/${c.slug}` }))}
         />
         <FooterColumn
-          title="Discover"
+          title={t('footer.discover')}
           links={[
-            { label: 'Marketplace', href: '/marketplace' },
-            { label: 'Coffee Encyclopedia', href: '/encyclopedia' },
-            { label: 'AI Coffee Assistant', href: '/ai-assistant' },
-            { label: 'Brew Guides', href: '/encyclopedia?type=brew_guide' },
+            { label: t('footer.discoverMarketplace'), href: '/marketplace' },
+            { label: t('footer.discoverEncyclopedia'), href: '/encyclopedia' },
+            { label: t('footer.discoverAiAssistant'), href: '/ai-assistant' },
+            { label: t('footer.discoverBrewGuides'), href: '/encyclopedia?type=brew_guide' },
+            { label: t('calculator.title'), href: '/calculator' },
           ]}
         />
         <FooterColumn
-          title="Business"
+          title={t('footer.business')}
           links={[
-            { label: 'Sell on iCoffeeHub', href: '/seller' },
-            { label: 'Help & Support', href: '/' },
-            { label: 'Terms of Service', href: '/' },
-            { label: 'Privacy Policy', href: '/' },
+            { label: t('footer.businessSell'), href: '/seller' },
+            { label: t('footer.businessSupport'), href: '/' },
+            { label: t('footer.businessTerms'), href: '/' },
+            { label: t('footer.businessPrivacy'), href: '/' },
           ]}
         />
       </div>
 
       <div className="border-t border-espresso-700">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-5 text-xs text-cream-200/60 sm:flex-row">
-          <span>&copy; {new Date().getFullYear()} iCoffeeHub.com — All rights reserved.</span>
-          <span>English (US) · USD</span>
+          <span>{t('footer.copyright', { year: new Date().getFullYear() })}</span>
+          <span>
+            {LOCALE_LABELS[locale]} · {t('common.currencyLabel')}
+          </span>
         </div>
       </div>
     </footer>

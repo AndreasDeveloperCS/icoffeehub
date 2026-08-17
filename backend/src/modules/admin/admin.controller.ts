@@ -79,8 +79,10 @@ export class AdminController {
   }
 
   @Patch('orders/:id/status')
-  setOrderStatus(@CurrentUser() user: AuthUser, @Param('id') id: string, @Body('status') status: OrderStatus) {
-    return this.ordersService.updateStatus(id, status, user.userId);
+  async setOrderStatus(@CurrentUser() user: AuthUser, @Param('id') id: string, @Body('status') status: OrderStatus) {
+    const order = await this.ordersService.updateStatus(id, status, user.userId);
+    await this.auditLogService.log(user.userId, user.role, `order.${status}`, 'Order', id);
+    return order;
   }
 
   @Get('audit-logs')

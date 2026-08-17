@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { StarRating } from './StarRating';
-import { formatLabel, formatMoney, lowestPrice } from '@/lib/format';
+import { formatMoney, lowestPrice } from '@/lib/format';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { Product } from '@/lib/types';
 
 const ROAST_GRADIENTS: Record<string, string> = {
@@ -12,6 +15,7 @@ const ROAST_GRADIENTS: Record<string, string> = {
 };
 
 export function ProductCard({ product }: { product: Product }) {
+  const { t } = useLanguage();
   const gradient = ROAST_GRADIENTS[product.roastLevel ?? 'medium'] ?? ROAST_GRADIENTS.medium;
   const price = lowestPrice(product.variants);
 
@@ -20,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className={`relative flex h-44 items-center justify-center bg-gradient-to-br ${gradient}`}>
         <BeanIcon className="h-14 w-14 text-white/90 drop-shadow" />
         {product.featured && (
-          <span className="badge absolute left-3 top-3 bg-gold-500 text-espresso-900">Featured</span>
+          <span className="badge absolute left-3 top-3 bg-gold-500 text-espresso-900">{t('product.featuredBadge')}</span>
         )}
         {product.originCountry && (
           <span className="badge absolute right-3 top-3 bg-white/90 text-espresso-700 backdrop-blur">
@@ -37,11 +41,13 @@ export function ProductCard({ product }: { product: Product }) {
 
         <div className="flex flex-wrap gap-1.5">
           {product.roastLevel && (
-            <span className="badge bg-espresso-50 text-espresso-600">{formatLabel(product.roastLevel)} Roast</span>
+            <span className="badge bg-espresso-50 text-espresso-600">
+              {t('product.roastBadge', { roast: t(`coffeeOptions.roastLevels.${product.roastLevel}`) })}
+            </span>
           )}
           {product.flavorNotes.slice(0, 2).map((f) => (
             <span key={f} className="badge bg-forest-50 text-forest-700">
-              {formatLabel(f)}
+              {t(`coffeeOptions.flavorNotes.${f}`)}
             </span>
           ))}
         </div>

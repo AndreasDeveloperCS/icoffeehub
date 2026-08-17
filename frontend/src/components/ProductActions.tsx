@@ -6,11 +6,13 @@ import { useAuth } from '@/lib/auth-context';
 import { useCart } from '@/lib/cart-context';
 import { api } from '@/lib/api';
 import { formatMoney } from '@/lib/format';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import type { ProductVariant } from '@/lib/types';
 
 export function ProductActions({ productId, variants }: { productId: string; variants: ProductVariant[] }) {
   const { user, refresh } = useAuth();
   const { addItem } = useCart();
+  const { t } = useLanguage();
   const router = useRouter();
   const [sku, setSku] = useState(variants[0]?.sku);
   const [quantity, setQuantity] = useState(1);
@@ -52,7 +54,7 @@ export function ProductActions({ productId, variants }: { productId: string; var
   return (
     <div className="space-y-5">
       <div>
-        <label className="label">Bag Size</label>
+        <label className="label">{t('productActions.bagSize')}</label>
         <div className="flex flex-wrap gap-2">
           {variants.map((v) => (
             <button
@@ -74,7 +76,7 @@ export function ProductActions({ productId, variants }: { productId: string; var
           <button
             className="px-3.5 py-2 text-lg text-espresso-600"
             onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            aria-label="Decrease quantity"
+            aria-label={t('productActions.decreaseQuantity')}
           >
             −
           </button>
@@ -82,13 +84,13 @@ export function ProductActions({ productId, variants }: { productId: string; var
           <button
             className="px-3.5 py-2 text-lg text-espresso-600"
             onClick={() => setQuantity((q) => Math.min(selected?.stock ?? 99, q + 1))}
-            aria-label="Increase quantity"
+            aria-label={t('productActions.increaseQuantity')}
           >
             +
           </button>
         </div>
         <span className="text-xs text-espresso-400">
-          {selected && selected.stock > 0 ? `${selected.stock} in stock` : 'Out of stock'}
+          {selected && selected.stock > 0 ? t('productActions.inStock', { count: selected.stock }) : t('productActions.outOfStock')}
         </span>
       </div>
 
@@ -98,12 +100,16 @@ export function ProductActions({ productId, variants }: { productId: string; var
           disabled={status === 'loading' || !selected || selected.stock === 0}
           className="btn-primary flex-1 text-base"
         >
-          {status === 'done' ? 'Added to cart ✓' : status === 'loading' ? 'Adding…' : `Add to cart — ${selected ? formatMoney(selected.price * quantity, selected.currency) : ''}`}
+          {status === 'done'
+            ? t('productActions.added')
+            : status === 'loading'
+              ? t('productActions.adding')
+              : t('productActions.addToCart', { price: selected ? formatMoney(selected.price * quantity, selected.currency) : '' })}
         </button>
         <button
           onClick={onToggleWishlist}
           disabled={wishBusy}
-          aria-label={wished ? 'Remove from wishlist' : 'Save to wishlist'}
+          aria-label={wished ? t('productActions.removeFromWishlist') : t('productActions.saveToWishlist')}
           className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors ${
             wished ? 'border-gold-500 bg-gold-50 text-gold-600' : 'border-espresso-200 text-espresso-500 hover:bg-espresso-50'
           }`}

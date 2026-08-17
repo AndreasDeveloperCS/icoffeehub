@@ -1,7 +1,12 @@
+'use client';
+
+import { useLanguage } from '@/lib/i18n/LanguageContext';
+
 export function StarRating({ value, count, size = 14 }: { value: number; count?: number; size?: number }) {
+  const { t } = useLanguage();
   return (
     <div className="flex items-center gap-1">
-      <div className="flex" aria-label={`${value.toFixed(1)} out of 5 stars`}>
+      <div className="flex" aria-label={t('reviews.ratingAriaLabel', { value: value.toFixed(1) })}>
         {[1, 2, 3, 4, 5].map((i) => (
           <svg key={i} width={size} height={size} viewBox="0 0 20 20" className="shrink-0">
             <defs>
