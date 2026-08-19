@@ -327,6 +327,8 @@ async function seed() {
           sources: meta.sources,
           locale,
           translationGroup: meta.translationGroup,
+          seoTitle: translation.seoTitle,
+          seoDescription: translation.seoDescription,
           status: 'published',
           publishedAt: new Date(),
         },
