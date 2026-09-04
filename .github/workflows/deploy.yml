@@ -1,0 +1,151 @@
+name: Deploy iCoffeeHub
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: icoffeehub-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on:
+      - self-hosted
+      - Linux
+      - X64
+      - icoffeehub
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use supported Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Show environment
+        run: |
+          echo "Runner: $(hostname)"
+          echo "User: $(whoami)"
+          node -v
+          npm -v
+          pm2 -v
+
+      - name: Deploy files
+        run: |
+          APP_PATH="${{ vars.APP_PATH }}"
+
+          if command -v sudo >/dev/null 2>&1 && sudo -n true >/dev/null 2>&1; then
+            echo "Using passwordless sudo to prepare deploy directory"
+            sudo mkdir -p "$APP_PATH"
+            sudo chown -R "$(id -u):$(id -g)" "$APP_PATH"
+          else
+            mkdir -p "$APP_PATH"
+          fi
+
+          if [ ! -w "$APP_PATH" ]; then
+            echo "Deploy path is not writable by runner user: $APP_PATH"
+            ls -ld "$APP_PATH" || true
+            id || true
+            exit 1
+          fi
+
+          rsync -az --delete --no-owner --no-group --no-perms \
+            --exclude=".git" \
+            --exclude=".github" \
+            --exclude="node_modules" \
+            --exclude="backend/node_modules" \
+            --exclude="backend/dist" \
+            --exclude="frontend/node_modules" \
+            --exclude="frontend/.next" \
+            --exclude=".env" \
+            --exclude=".env.local" \
+            --exclude=".env.production" \
+            ./ "$APP_PATH/"
+
+      - name: Install and build backend
+        working-directory: ${{ vars.APP_PATH }}/backend
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci
+          else
+            echo "No lockfile found in backend; falling back to npm install"
+            npm install --no-audit --no-fund
+          fi
+          npm run build
+
+      - name: Install and build frontend
+        working-directory: ${{ vars.APP_PATH }}/frontend
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci
+          else
+            echo "No lockfile found in frontend; falling back to npm install"
+            npm install --no-audit --no-fund
+          fi
+          npm run build
+
+      - name: Start or restart application
+        working-directory: ${{ vars.APP_PATH }}
+        run: |
+          set -euo pipefail
+
+          PM2_BIN="$(command -v pm2)"
+          export PM2_HOME="${PM2_HOME:-$HOME/.pm2}"
+          pm2_cmd() { "$PM2_BIN" "$@"; }
+
+          pm2_cmd delete icoffeehub-backend icoffeehub-frontend || true
+          pm2_cmd start ecosystem.config.js --update-env
+          pm2_cmd save
+
+      - name: Verify PM2 processes are online
+        working-directory: ${{ vars.APP_PATH }}
+        run: |
+          PM2_BIN="$(command -v pm2)"
+          export PM2_HOME="${PM2_HOME:-$HOME/.pm2}"
+          pm2_cmd() { "$PM2_BIN" "$@"; }
+
+          for app in icoffeehub-backend icoffeehub-frontend; do
+            echo "Waiting for PM2 app: ${app}"
+            for i in {1..15}; do
+              if pm2_cmd describe "$app" | grep -q "status.*online"; then
+                echo "${app} is online"
+                break
+              fi
+
+              if [ "$i" -eq 15 ]; then
+                echo "${app} failed to reach online state"
+                pm2_cmd describe "$app" || true
+                pm2_cmd logs "$app" --lines 80 --nostream || true
+                exit 1
+              fi
+
+              sleep 2
+            done
+          done
+
+          pm2_cmd list
+
+      - name: Verify backend is responding
+        run: |
+          set -euo pipefail
+
+          curl --fail --retry 10 --retry-delay 2 --retry-connrefused http://127.0.0.1:4000/api >/dev/null
+          echo "iCoffeeHub backend is responding on port 4000"
+
+      - name: Verify frontend is responding
+        run: |
+          set -euo pipefail
+
+          curl --fail --retry 10 --retry-delay 2 --retry-connrefused http://127.0.0.1:3000 >/dev/null
+          echo "iCoffeeHub frontend is responding on port 3000"
+
+      - name: Install and reload Nginx
+        run: |
+          set -euo pipefail
+          sudo -n /usr/local/sbin/deploy-icoffeehub-nginx

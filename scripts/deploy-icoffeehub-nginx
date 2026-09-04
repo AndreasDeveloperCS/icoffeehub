@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Reference copy of the script installed at /usr/local/sbin/deploy-icoffeehub-nginx
+# on the deploy host, invoked via passwordless sudo from
+# .github/workflows/deploy.yml ("Install and reload Nginx").
+#
+# It must live outside the rsync'd app directory and be owned by root,
+# not the deploy runner user — that's what makes the sudoers NOPASSWD
+# entry below safe: a compromised repo push can change this file, but
+# can't change what root actually executes.
+#
+# One-time setup on the deploy host:
+#   sudo cp scripts/deploy-icoffeehub-nginx /usr/local/sbin/deploy-icoffeehub-nginx
+#   sudo chown root:root /usr/local/sbin/deploy-icoffeehub-nginx
+#   sudo chmod 755 /usr/local/sbin/deploy-icoffeehub-nginx
+#   echo '<runner-user> ALL=(root) NOPASSWD: /usr/local/sbin/deploy-icoffeehub-nginx' | \
+#     sudo tee /etc/sudoers.d/deploy-icoffeehub-nginx
+set -euo pipefail
+
+# Must match the `APP_PATH` repo variable used by the deploy workflow.
+APP_PATH="/var/www/icoffeehub"
+CONF_NAME="icoffeehub.com.conf"
+
+cp "$APP_PATH/nginx/$CONF_NAME" "/etc/nginx/sites-available/$CONF_NAME"
+ln -sf "/etc/nginx/sites-available/$CONF_NAME" "/etc/nginx/sites-enabled/$CONF_NAME"
+
+nginx -t
+systemctl reload nginx
