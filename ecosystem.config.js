@@ -20,5 +20,13 @@ module.exports = {
         PORT: 3000,
       },
     },
+
+    {
+      name: 'icoffeehub-runner',
+      cwd: '/home/deploy/actions-runner',
+      script: './run.sh',
+      interpreter: 'none',
+      autorestart: true,
+    },
   ],
 };
