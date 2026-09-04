@@ -17,7 +17,8 @@ async function bootstrap() {
     }),
   );
 
-  const port = config.get<number>('PORT', 4000);
+  const configuredPort = config.get<string>('PORT');
+  const port = Number.parseInt(configuredPort ?? '4000', 10) || 4000;
   await app.listen(port);
   // eslint-disable-next-line no-console
   console.log(`iCoffeeHub API listening on http://localhost:${port}/api`);
