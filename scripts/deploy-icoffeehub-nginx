@@ -20,6 +20,13 @@ set -euo pipefail
 APP_PATH="/var/www/icoffeehub"
 CONF_NAME="icoffeehub.com.conf"
 
+# A hand-written "icoffeehub.conf" (no ".com") was created directly on this
+# host before this deploy pipeline existed. It declares the same
+# `server_name icoffeehub.com`, so if it's still present nginx silently picks
+# whichever of the two loads first and ignores the repo-managed one below.
+# Remove it every deploy so it can never come back from a stale symlink.
+rm -f "/etc/nginx/sites-available/icoffeehub.conf" "/etc/nginx/sites-enabled/icoffeehub.conf"
+
 cp "$APP_PATH/nginx/$CONF_NAME" "/etc/nginx/sites-available/$CONF_NAME"
 ln -sf "/etc/nginx/sites-available/$CONF_NAME" "/etc/nginx/sites-enabled/$CONF_NAME"
 
