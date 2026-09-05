@@ -100,7 +100,8 @@ jobs:
           pm2_cmd() { "$PM2_BIN" "$@"; }
 
           pm2_cmd delete icoffeehub-backend icoffeehub-frontend || true
-          pm2_cmd start ecosystem.config.js --update-env
+          unset RUNNER_TRACKING_ID
+          pm2_cmd start ecosystem.config.js --only icoffeehub-backend,icoffeehub-frontend --update-env
           pm2_cmd save
 
       - name: Verify PM2 processes are online

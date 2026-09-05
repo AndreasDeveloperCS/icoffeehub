@@ -4,6 +4,7 @@ module.exports = {
       name: 'icoffeehub-backend',
       cwd: '/var/www/icoffeehub/backend',
       script: 'dist/main.js',
+      interpreter: 'node',
       env: {
         NODE_ENV: 'production',
         PORT: 4000,
@@ -19,14 +20,6 @@ module.exports = {
         NODE_ENV: 'production',
         PORT: 3000,
       },
-    },
-
-    {
-      name: 'icoffeehub-runner',
-      cwd: '/home/deploy/actions-runner',
-      script: './run.sh',
-      interpreter: 'none',
-      autorestart: true,
     },
   ],
 };
