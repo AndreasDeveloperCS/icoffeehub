@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Poppins, Inter } from 'next/font/google';
-import './globals.css';
+import { Poppins, Roboto } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Providers } from '@/components/Providers';
+import './globals.css';
 
 const heading = Poppins({
   subsets: ['latin'],
@@ -12,13 +12,15 @@ const heading = Poppins({
   display: 'swap',
 });
 
-const body = Inter({
+const body = Roboto({
   subsets: ['latin'],
+  weight: ['400', '500', '700'],
   variable: '--font-body',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://icoffeehub.com'),
   title: 'iCoffeeHub.com — Everything About Coffee. One Global Hub.',
   description:
     'A global coffee marketplace, encyclopedia and AI assistant connecting coffee farms, roasters, shops and enthusiasts worldwide.',
