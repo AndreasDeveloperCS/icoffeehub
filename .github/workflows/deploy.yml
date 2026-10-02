@@ -134,14 +134,29 @@ jobs:
         run: |
           set -euo pipefail
 
-          curl --fail --retry 10 --retry-delay 2 --retry-connrefused http://127.0.0.1:4000/api >/dev/null
+          PM2_BIN="$(command -v pm2)"
+          export PM2_HOME="${PM2_HOME:-$HOME/.pm2}"
+
+          # Longer window than a fresh DB connection (e.g. a resuming Atlas cluster) can need.
+          if ! curl --fail --retry 30 --retry-delay 2 --retry-connrefused http://127.0.0.1:4000/api >/dev/null; then
+            echo "Backend did not respond in time; recent logs:"
+            "$PM2_BIN" logs icoffeehub-backend --lines 100 --nostream || true
+            exit 1
+          fi
           echo "iCoffeeHub backend is responding on port 4000"
 
       - name: Verify frontend is responding
         run: |
           set -euo pipefail
 
-          curl --fail --retry 10 --retry-delay 2 --retry-connrefused http://127.0.0.1:3000 >/dev/null
+          PM2_BIN="$(command -v pm2)"
+          export PM2_HOME="${PM2_HOME:-$HOME/.pm2}"
+
+          if ! curl --fail --retry 30 --retry-delay 2 --retry-connrefused http://127.0.0.1:3000 >/dev/null; then
+            echo "Frontend did not respond in time; recent logs:"
+            "$PM2_BIN" logs icoffeehub-frontend --lines 100 --nostream || true
+            exit 1
+          fi
           echo "iCoffeeHub frontend is responding on port 3000"
 
       - name: Install and reload Nginx
