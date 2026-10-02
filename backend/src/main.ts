@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = app.get(ConfigService);
 
-  const isProduction = config.get<string>('NODE_ENV') === 'production';
+  const isProduction = config.get<string>('NODE_ENV', '').toLowerCase() === 'production';
 
   const corsOrigin = isProduction
     ? config.getOrThrow<string>('CORS_ORIGIN')
