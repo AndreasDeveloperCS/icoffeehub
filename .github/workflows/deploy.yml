@@ -68,6 +68,20 @@ jobs:
             --exclude=".env.production" \
             ./ "$APP_PATH/"
 
+      - name: Write backend environment file
+        working-directory: ${{ vars.APP_PATH }}/backend
+        run: |
+          umask 077
+          cat > .env <<EOF
+          NODE_ENV=${{ vars.NODE_ENV }}
+          PORT=${{ vars.BACKEND_PORT }}
+          MONGODB_URI=${{ vars.MONGODB_URI }}
+          JWT_SECRET=${{ vars.JWT_SECRET }}
+          JWT_EXPIRES_IN=${{ vars.JWT_EXPIRES_IN }}
+          CORS_ORIGIN=${{ vars.CORS_ORIGIN }}
+          CORS_ORIGIN_DEV=${{ vars.CORS_ORIGIN_DEV }}
+          EOF
+
       - name: Install and build backend
         working-directory: ${{ vars.APP_PATH }}/backend
         run: |
