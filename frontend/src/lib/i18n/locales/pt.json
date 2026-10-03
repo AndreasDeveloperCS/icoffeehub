@@ -52,10 +52,22 @@
       "ctaQuiz": "Faça o Quiz de Sabor"
     },
     "trust": {
-      "verifiedSellers": { "label": "Vendedores Verificados", "desc": "Fazendas e torrefadores avaliados antes de anunciar" },
-      "freshRoastDates": { "label": "Datas de Torra Recentes", "desc": "Cada pacote mostra exatamente quando foi torrado" },
-      "originTransparency": { "label": "Transparência de Origem", "desc": "Fazenda, altitude e processo em cada produto" },
-      "aiGuidedDiscovery": { "label": "Descoberta Guiada por IA", "desc": "Recomendações personalizadas com base no seu perfil de sabor" }
+      "verifiedSellers": {
+        "label": "Vendedores Verificados",
+        "desc": "Fazendas e torrefadores avaliados antes de anunciar"
+      },
+      "freshRoastDates": {
+        "label": "Datas de Torra Recentes",
+        "desc": "Cada pacote mostra exatamente quando foi torrado"
+      },
+      "originTransparency": {
+        "label": "Transparência de Origem",
+        "desc": "Fazenda, altitude e processo em cada produto"
+      },
+      "aiGuidedDiscovery": {
+        "label": "Descoberta Guiada por IA",
+        "desc": "Recomendações personalizadas com base no seu perfil de sabor"
+      }
     },
     "originSection": {
       "eyebrow": "Explore por Origem",
@@ -395,6 +407,75 @@
       "coldBrew": "Cold Brew",
       "mokaPot": "Cafeteira Moka",
       "espresso": "Espresso"
+    }
+  },
+  "privacy": {
+    "eyebrow": "Legal",
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização: 3 de outubro de 2026",
+    "sections": {
+      "introduction": {
+        "title": "1. Introdução",
+        "body": "A iCoffeeHub.com («iCoffeeHub», «nós» ou «nosso») respeita a sua privacidade e está comprometida em proteger as informações pessoais que você fornece ao utilizar nosso site, marketplace, recursos de conta, enciclopédia de café, assistente de IA e serviços relacionados. Esta Política de Privacidade explica quais informações coletamos, como as utilizamos e quais opções estão disponíveis para você."
+      },
+      "information": {
+        "title": "2. Informações que coletamos",
+        "body": "Dependendo de como você utiliza a iCoffeeHub, podemos coletar informações fornecidas diretamente por você e informações geradas durante a utilização dos nossos serviços.",
+        "items": {
+          "account": "Informações da conta, como nome, endereço de e-mail, credenciais de acesso e informações do perfil de vendedor.",
+          "orders": "Informações sobre pedidos e transações, incluindo produtos adquiridos, dados de entrega, histórico de pedidos e solicitações de suporte relacionadas.",
+          "technical": "Informações técnicas, como tipo de navegador, dispositivo, endereço IP, preferência de idioma, localização aproximada derivada de dados técnicos e informações sobre como você interage com nosso site.",
+          "communication": "Informações fornecidas ao entrar em contato com o suporte, publicar avaliações, criar notas de degustação ou comunicar-se conosco."
+        }
+      },
+      "use": {
+        "title": "3. Como usamos suas informações",
+        "body": "Usamos as informações coletadas para operar, manter e melhorar a iCoffeeHub e fornecer os serviços solicitados.",
+        "items": {
+          "account": "Criar e gerenciar sua conta e realizar sua autenticação.",
+          "orders": "Processar pedidos, fornecer informações de entrega e comunicar-nos sobre transações.",
+          "marketplace": "Operar o marketplace e conectar compradores e vendedores.",
+          "ai": "Fornecer recomendações personalizadas de café e responder às perguntas enviadas ao Assistente de Café com IA.",
+          "security": "Detectar fraudes, prevenir abusos, proteger contas e manter a segurança dos nossos serviços.",
+          "improvement": "Entender como nossos serviços são utilizados e melhorar o site, seus recursos e a experiência do usuário."
+        }
+      },
+      "ai": {
+        "title": "4. Assistente de Café com IA",
+        "body": "O Assistente de Café com IA pode processar as informações fornecidas por você sobre preferências de sabor, perguntas e outras interações para gerar respostas ou recomendações. As recomendações geradas por IA têm fins informativos e de descoberta e não devem ser consideradas fatos verificados sobre os produtos. As informações do produto devem sempre ser verificadas na respectiva página do marketplace."
+      },
+      "cookies": {
+        "title": "5. Cookies e tecnologias semelhantes",
+        "body": "A iCoffeeHub pode utilizar cookies e tecnologias semelhantes necessários para autenticação, segurança, preferências e funcionamento do site. Também podemos utilizar tecnologias de análise para compreender o uso do site e melhorar nossos serviços. Quando exigido pela legislação aplicável, solicitaremos o consentimento adequado antes de utilizar cookies não essenciais."
+      },
+      "storage": {
+        "title": "6. Armazenamento local e preferências",
+        "body": "Algumas preferências e recursos do site podem utilizar o armazenamento local do navegador. Por exemplo, determinadas preferências, informações da lista de desejos ou configurações da interface podem ser armazenadas localmente no seu dispositivo. O armazenamento local é controlado pelo navegador e normalmente pode ser apagado nas configurações do navegador."
+      },
+      "sharing": {
+        "title": "7. Compartilhamento de informações",
+        "body": "Podemos compartilhar informações com prestadores de serviços que nos ajudam a operar a iCoffeeHub, como provedores de hospedagem, autenticação, banco de dados, pagamentos, entregas, análise, comunicação e segurança. Também podemos divulgar informações quando exigido por lei, para proteger nossos direitos ou usuários, ou em conexão com uma operação empresarial, como uma fusão ou aquisição. Não vendemos suas informações pessoais como um produto independente."
+      },
+      "security": {
+        "title": "8. Segurança dos dados",
+        "body": "Utilizamos medidas técnicas e organizacionais razoáveis destinadas a proteger informações pessoais contra acesso não autorizado, perda, uso indevido ou alteração. No entanto, nenhuma transmissão pela Internet ou sistema de armazenamento eletrônico pode garantir segurança absoluta."
+      },
+      "rights": {
+        "title": "9. Seus direitos de privacidade",
+        "body": "Dependendo da sua localização e da legislação aplicável, você pode ter direitos de acessar, corrigir, excluir, restringir ou contestar determinados tratamentos dos seus dados pessoais. Você também pode ter o direito de solicitar uma cópia de determinadas informações ou retirar o consentimento quando o tratamento for baseado nele. Para exercer os direitos aplicáveis, entre em contato conosco usando os dados abaixo."
+      },
+      "children": {
+        "title": "10. Privacidade de crianças",
+        "body": "A iCoffeeHub não se destina a crianças abaixo da idade mínima exigida para utilizar serviços online em sua jurisdição. Não coletamos conscientemente informações pessoais de crianças em violação à legislação aplicável."
+      },
+      "changes": {
+        "title": "11. Alterações nesta Política de Privacidade",
+        "body": "Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações em nossos serviços, tecnologia, requisitos legais ou práticas comerciais. Quando fizermos alterações, atualizaremos a data indicada no início desta política. O uso contínuo da iCoffeeHub após uma atualização significa que a política atualizada se aplica ao uso dos serviços."
+      },
+      "contact": {
+        "title": "12. Contato",
+        "body": "Se tiver dúvidas sobre esta Política de Privacidade ou quiser exercer um direito de privacidade, entre em contato com a equipe da iCoffeeHub através da seção de Ajuda e Suporte do site."
+      }
     }
   }
 }

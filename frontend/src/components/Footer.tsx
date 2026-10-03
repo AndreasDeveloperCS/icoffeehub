@@ -45,7 +45,7 @@ export function Footer() {
             { label: t('footer.businessSell'), href: '/seller' },
             { label: t('footer.businessSupport'), href: '/' },
             { label: t('footer.businessTerms'), href: '/' },
-            { label: t('footer.businessPrivacy'), href: '/' },
+            { label: t('footer.businessPrivacy'), href: '/privacy' },
           ]}
         />
       </div>
