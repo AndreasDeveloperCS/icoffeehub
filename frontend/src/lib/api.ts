@@ -1,4 +1,7 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+// Keep browser requests same-origin, even if a legacy public URL points to localhost.
+const API_URL = typeof window === 'undefined'
+  ? process.env.API_URL || 'http://127.0.0.1:4000/api'
+  : '/api';
 
 export class ApiError extends Error {
   status: number;

@@ -50,11 +50,21 @@ The seed also creates two coupons (`WELCOME10`, `FREESHIP`), three shipping carr
 ```bash
 cd frontend
 npm install
-cp .env.local.example .env.local   # NEXT_PUBLIC_API_URL, defaults to http://localhost:4000/api
+cp .env.local.example .env.local   # optional server-only API_URL; defaults to http://127.0.0.1:4000/api
 npm run dev              # http://localhost:3000
 ```
 
-Run backend and frontend in separate terminals; the frontend expects the API at `NEXT_PUBLIC_API_URL`.
+Run backend and frontend in separate terminals. Browser requests always use same-origin `/api`;
+Next.js proxies them to the backend locally, while production Nginx routes `/api/` directly to NestJS.
+Server-rendered pages use the server-only `API_URL`. If the backend uses a different port or host,
+set `API_URL` before building and starting Next.js. The legacy `NEXT_PUBLIC_API_URL` setting is no
+longer used, so an old localhost value cannot send visitors' authentication requests to their own
+computers or trigger a browser local-network permission prompt. Rebuild and restart the frontend
+after deploying this change; an already-built browser bundle will not pick it up.
+
+Run `npm test` in `frontend` for API routing, authentication request, token, and error-handling
+regressions. Deployment also checks that both authentication routes reach backend validation
+through the frontend proxy without creating test accounts.
 
 ## Golden path to verify manually
 

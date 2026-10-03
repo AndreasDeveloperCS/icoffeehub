@@ -95,10 +95,9 @@ jobs:
 
       - name: Install and build frontend
         working-directory: ${{ vars.APP_PATH }}/frontend
-        # NEXT_PUBLIC_* values are inlined at build time; without them the
-        # bundle falls back to http://localhost:4000/api in the browser.
+        # Browser API requests stay same-origin; only the server uses this address.
         env:
-          NEXT_PUBLIC_API_URL: ${{ vars.CORS_ORIGIN }}/api
+          API_URL: http://127.0.0.1:${{ vars.BACKEND_PORT }}/api
           NEXT_PUBLIC_SITE_URL: ${{ vars.CORS_ORIGIN }}
         run: |
           if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
@@ -107,15 +106,18 @@ jobs:
             echo "No lockfile found in frontend; falling back to npm install"
             npm install --no-audit --no-fund
           fi
+          npm test
           npm run build
 
-          if grep -rqF "localhost:4000" .next/static; then
-            echo "Frontend bundle still points at localhost:4000; check NEXT_PUBLIC_API_URL"
+          if grep -rqE "(localhost|127\.0\.0\.1):[0-9]+/api" .next/static; then
+            echo "Frontend browser bundle contains a local backend address"
             exit 1
           fi
 
       - name: Start or restart application
         working-directory: ${{ vars.APP_PATH }}
+        env:
+          API_URL: http://127.0.0.1:${{ vars.BACKEND_PORT }}/api
         run: |
           set -euo pipefail
 
@@ -182,6 +184,20 @@ jobs:
             exit 1
           fi
           echo "iCoffeeHub frontend is responding on port 3000"
+
+      - name: Verify frontend authentication API routing
+        run: |
+          set -euo pipefail
+          # Invalid payloads verify routing and validation without creating accounts.
+          for endpoint in register login; do
+            status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' \
+              -H 'Content-Type: application/json' -d '{}' \
+              "http://127.0.0.1:3000/api/auth/${endpoint}")"
+            if [ "$status" != "400" ]; then
+              echo "Authentication route ${endpoint} returned ${status}; expected validation status 400"
+              exit 1
+            fi
+          done
 
       - name: Install and reload Nginx
         run: |
