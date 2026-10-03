@@ -5,30 +5,56 @@
 #
 # It must live outside the rsync'd app directory and be owned by root,
 # not the deploy runner user — that's what makes the sudoers NOPASSWD
-# entry below safe: a compromised repo push can change this file, but
-# can't change what root actually executes.
+# entry below safe: a compromised repo push can change the nginx config it
+# copies, but can't change what root actually executes.
 #
-# One-time setup on the deploy host:
-#   sudo cp scripts/deploy-icoffeehub-nginx /usr/local/sbin/deploy-icoffeehub-nginx
-#   sudo chown root:root /usr/local/sbin/deploy-icoffeehub-nginx
-#   sudo chmod 755 /usr/local/sbin/deploy-icoffeehub-nginx
-#   echo '<runner-user> ALL=(root) NOPASSWD: /usr/local/sbin/deploy-icoffeehub-nginx' | \
-#     sudo tee /etc/sudoers.d/deploy-icoffeehub-nginx
+# One-time setup (and after every change to this file) on the deploy host:
+#   sudo install -o root -g root -m 755 scripts/deploy-icoffeehub-nginx /usr/local/sbin/deploy-icoffeehub-nginx
+#   echo 'deploy ALL=(root) NOPASSWD: /usr/local/sbin/deploy-icoffeehub-nginx' | \
+#     sudo tee /etc/sudoers.d/icoffeehub-deploy
+#   sudo chmod 440 /etc/sudoers.d/icoffeehub-deploy
 set -euo pipefail
 
 # Must match the `APP_PATH` repo variable used by the deploy workflow.
 APP_PATH="/var/www/icoffeehub"
-CONF_NAME="icoffeehub.com.conf"
+SRC="$APP_PATH/nginx/icoffeehub.com.conf"
+DEST="/etc/nginx/sites-available/icoffeehub.com.conf"
+LINK="/etc/nginx/sites-enabled/icoffeehub.com.conf"
+
+if [ ! -f "$SRC" ]; then
+    echo "Nginx config not found: $SRC" >&2
+    exit 1
+fi
 
 # A hand-written "icoffeehub.conf" (no ".com") was created directly on this
 # host before this deploy pipeline existed. It declares the same
 # `server_name icoffeehub.com`, so if it's still present nginx silently picks
-# whichever of the two loads first and ignores the repo-managed one below.
-# Remove it every deploy so it can never come back from a stale symlink.
+# whichever of the two loads first and ignores the other.
 rm -f "/etc/nginx/sites-available/icoffeehub.conf" "/etc/nginx/sites-enabled/icoffeehub.conf"
 
-cp "$APP_PATH/nginx/$CONF_NAME" "/etc/nginx/sites-available/$CONF_NAME"
-ln -sf "/etc/nginx/sites-available/$CONF_NAME" "/etc/nginx/sites-enabled/$CONF_NAME"
+# Keep the currently deployed config so a bad one never stays on disk: if it
+# did, the next reload (certbot renewal, reboot) would take the site down.
+BACKUP="$(mktemp)"
+trap 'rm -f "$BACKUP"' EXIT
+HAD_PREVIOUS=0
+if [ -f "$DEST" ]; then
+    cp -p "$DEST" "$BACKUP"
+    HAD_PREVIOUS=1
+fi
 
-nginx -t
+cp "$SRC" "$DEST"
+ln -sfn "$DEST" "$LINK"
+
+if ! nginx -t; then
+    echo "Nginx config test failed; restoring the previous config" >&2
+    if [ "$HAD_PREVIOUS" -eq 1 ]; then
+        cp -p "$BACKUP" "$DEST"
+    else
+        rm -f "$DEST" "$LINK"
+    fi
+    exit 1
+fi
+
 systemctl reload nginx
+
+echo "iCoffeeHub Nginx configuration deployed successfully"
