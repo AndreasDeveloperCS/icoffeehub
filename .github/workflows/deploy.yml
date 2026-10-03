@@ -95,6 +95,11 @@ jobs:
 
       - name: Install and build frontend
         working-directory: ${{ vars.APP_PATH }}/frontend
+        # NEXT_PUBLIC_* values are inlined at build time; without them the
+        # bundle falls back to http://localhost:4000/api in the browser.
+        env:
+          NEXT_PUBLIC_API_URL: ${{ vars.CORS_ORIGIN }}/api
+          NEXT_PUBLIC_SITE_URL: ${{ vars.CORS_ORIGIN }}
         run: |
           if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
             npm ci
@@ -103,6 +108,11 @@ jobs:
             npm install --no-audit --no-fund
           fi
           npm run build
+
+          if grep -rqF "localhost:4000" .next/static; then
+            echo "Frontend bundle still points at localhost:4000; check NEXT_PUBLIC_API_URL"
+            exit 1
+          fi
 
       - name: Start or restart application
         working-directory: ${{ vars.APP_PATH }}
