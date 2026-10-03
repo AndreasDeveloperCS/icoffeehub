@@ -20,6 +20,7 @@ import { SupportModule } from './modules/support/support.module';
 import { AuditLogModule } from './modules/audit/audit-log.module';
 import { PayoutsModule } from './modules/payouts/payouts.module';
 import { CollectionsModule } from './modules/collections/collections.module';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -51,5 +52,6 @@ import { CollectionsModule } from './modules/collections/collections.module';
     PayoutsModule,
     CollectionsModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}

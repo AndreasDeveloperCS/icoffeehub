@@ -72,11 +72,11 @@ jobs:
         working-directory: ${{ vars.APP_PATH }}/backend
         run: |
           umask 077
-          cat > .env <<EOF
+          cat > .env <<'EOF'
           NODE_ENV=${{ vars.NODE_ENV }}
           PORT=${{ vars.BACKEND_PORT }}
           MONGODB_URI=${{ vars.MONGODB_URI }}
-          JWT_SECRET=${{ vars.JWT_SECRET }}
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
           JWT_EXPIRES_IN=${{ vars.JWT_EXPIRES_IN }}
           CORS_ORIGIN=${{ vars.CORS_ORIGIN }}
           CORS_ORIGIN_DEV=${{ vars.CORS_ORIGIN_DEV }}
@@ -152,12 +152,12 @@ jobs:
           export PM2_HOME="${PM2_HOME:-$HOME/.pm2}"
 
           # Longer window than a fresh DB connection (e.g. a resuming Atlas cluster) can need.
-          if ! curl --fail --retry 30 --retry-delay 2 --retry-connrefused http://127.0.0.1:4000/api >/dev/null; then
+          if ! curl --fail --retry 30 --retry-delay 2 --retry-connrefused http://127.0.0.1:${{ vars.BACKEND_PORT }}/api/health >/dev/null; then
             echo "Backend did not respond in time; recent logs:"
             "$PM2_BIN" logs icoffeehub-backend --lines 100 --nostream || true
             exit 1
           fi
-          echo "iCoffeeHub backend is responding on port 4000"
+          echo "iCoffeeHub backend is responding on port ${{ vars.BACKEND_PORT }}"
 
       - name: Verify frontend is responding
         run: |
